@@ -1,0 +1,326 @@
+body {
+	font-size: 24px;
+	font-family: Jazz LET, fantasy;
+	background: black;
+	margin: 30px;
+
+}
+#video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+
+    z-index: -2; /*to push video background all the way to the back*/
+  
+}
+
+a {
+	color: rgb(255,255,255);
+	background: radial-gradient(white 10%, #fba1a4);
+	border: 2px solid #fba1a4;
+	border-radius: 10px;
+	
+
+	width: 140px; /*defines border size*/
+    margin: auto; /*centers entire thing*/
+	
+	text-align: center;
+	padding:10px;
+
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    -webkit-background-clip: text; /*add the following code so that the color of the text is the color of the background */
+    -webkit-text-fill-color: transparent;/*remove the background color*/
+
+  	-webkit-animation-delay: 0.5s; /*entrance animnation delay*/
+  	-webkit-animation-duration: 1.5s; /*entrance animation duration*/
+	
+}
+
+#Title {
+	font-size: 100px;
+	color: rgb(255,255,255);
+	background: radial-gradient(white 10%, #fba1a4);
+	border: 2px solid #fba1a4;
+	border-radius: 10px;
+
+
+	width: 850px;
+    margin: auto; /*centers entire thing*/
+    
+    text-align: center;
+    padding: 20px;
+    padding-top: 30px;
+
+    -webkit-background-clip: text; /*add the following code so that the color of the text is the color of the background */
+    -webkit-text-fill-color: transparent; /*remove the background color*/
+
+    -webkit-animation-duration: 1.5s; /*entrance animation duration*/
+
+}
+
+
+div.Notes1 {
+    color: black;
+	background: radial-gradient(white 10%, #fba1a4);
+	border: 5px #d53e40;
+	border-radius: 10px;
+	box-shadow: -10px 13px 15px #322021;
+
+	width: 700px;
+	height: 500px; /*necessary in order to position input field*/
+    margin: auto;
+
+    text-align: center;
+    justify-content: left;
+    padding: 30px; /*space between border and text (content)*/
+
+    position: relative;
+}
+
+div.Notes2 {
+   	color: black;
+	border-radius: 10px;
+
+	width: 800px;
+	height: 570px; /*necessary in order to position input field*/
+    margin: auto;
+
+    padding: 30px; /*space between border and text (content)*/
+
+    position: relative; /*position is necessary for formatting given that the parent element has a position of "absolute"*/
+
+    -dyn-opacity: '@shouldAppear({when: @win-scrollTop, isHigherThan: @win-height*2})'; /*using a library, add a special effect that makes the opacity of the element go up as the user scrolls down*/
+
+
+}
+
+div.Notes3 {
+	background: radial-gradient(white 75%, #bbbbd6); 
+	border: 5px #d53e40;
+	border-radius: 10px;
+	box-shadow: -10px 13px 15px #242453;
+
+	margin: 30px;
+	width: 500px;
+	height: 400px;
+
+	text-align: center;
+    justify-content: left;
+    padding: 30px; /*space between border and text (content)*/
+
+}
+
+#MessageSpace {
+	color: #c80606;
+	position: absolute;
+	left: 306px;
+	bottom: 60px;
+	margin: -5px;
+}
+
+#BeginButton {
+	font-size: 24px;
+	font-family: Jazz LET, fantasy;
+	color: black;
+	background: radial-gradient(white 75%, #bbbbd6);
+	border-radius: 5px;
+	border: 5px #d53e40;
+	box-shadow: -10px 13px 15px #242453;
+
+	padding-top: 5px;
+
+}
+
+#NextButton {
+	font-size: 24px;
+	font-family: Jazz LET, fantasy;
+	color: black;
+	background: radial-gradient(white 0%, #fba1a4 130%);
+	border-radius: 5px;
+	border: 5px #d53e40;
+
+	padding-top: 5px;
+
+	position: absolute; /*positions it relative to its preceding ancestor, which*/
+	right: 40px; /*fixed 150 px from right corner of parent element (not from corner of window)*/
+	bottom: 30px; /*fixed 15px from the bottom of parent element*/
+
+}
+
+input {
+	font-size: 24px;
+	font-family: Jazz LET, fantasy;
+	color: black;
+	border-radius: 30px;
+
+	width: 155px;
+	height: 26px;
+	margin: -8px;
+
+	position: absolute; /*positions it relative to its preceding ancestor, which*/
+	right: 305px;/*fixed from right corner of parent element (not from corner of window)*/
+	bottom: 115px;
+}
+
+p {
+	text-align: left;
+}
+
+#blade {
+	height: 200px;
+
+	-dyn-webkit-transform: '"rotate(#{@win-scrollTop}deg) "'; /*using an imported library, make the element rotate as the user scrolls*/
+}
+
+.blades {
+	 text-align: center;
+}
+
+#Words {
+	-webkit-animation-duration: 2s; /*make the animation effects that happen in the Words element last for 2 seconds*/
+  	/*-webkit-animation-delay: 1s;*/
+  	/*-webkit-animation-iteration-count: infinite;*/
+}
+.Jesters {
+	height: 420px;
+	box-shadow: -3px 8px 15px #322021;
+	border-radius: 15px;
+	margin: 5px;
+}
+
+.slick-prev:before, .slick-next:before { /*access the elements defined in the imported library*/
+	font-size: 125px; /*change the size of the arrows of the carousal*/
+	line-height: 70px; /*change the vertical position of the arrows*/
+}
+
+.slick-prev { 
+	left: -100px; /*change the horizontal position of the arrow pointing left*/
+}
+
+.slick-next {
+	right: 5px; /*change the horizontal position of the arrow pointing left*/
+}
+
+.center { 
+	display: flex; /*makes list, list item, or different-div-tag items that hold list or list items be in one line*/
+	position: absolute;
+	left: 50%; /*centers element*/
+	transform: translate(-50%, -50%);
+	padding-bottom: 480px; 
+}
+
+.hoverSpace {
+	display:flex; /*makes list, list item, or different-div-tag items that hold list or list items be in one line*/
+}
+
+ul {
+	margin: 0 -5px; /*brings the words closer together*/
+	display:flex; /*makes list, list item, or different-div-tag items that hold list or list items be in one line*/
+}
+
+ul li {
+	list-style: none; /*removes the bullets from the list items*/
+	font-size: 70px;
+	color: rgb(255,255,255);
+	background: radial-gradient(white 10%, #fba1a4);
+
+	-webkit-background-clip: text; /*add the following code so that the color of the text is the color of the background */
+    -webkit-text-fill-color: transparent; /*remove the background color*/
+
+    -webkit-animation-delay: 4.5s; /*delays the initiation of the ENTRANCE animation inserted in the JavaScript file*/
+}
+
+.hoverSpace:hover li /*add a hover event over the div "hoverSpace", which is specifically written into the HTML so that the space sensitive to the triggered special effect is only the space occupied by the presented text*/
+{
+	animation: animate 2s linear backwards; /*adds an animation*/
+}
+/*the  following code under @keyframes controls the starting the condition to ending condition of the special effect*/
+@keyframes animate 
+{
+	0%
+	{
+		transform: rotate(0deg) translateY(0px);
+		opacity: 1;
+		filter: blur(1px);
+	}
+	100%
+	{
+		transform: rotate(45deg) translateY(-200px);
+		opacity: 0;
+		filter: blur(20px);
+	}
+}
+
+/*the following code manipulates the timing of each li element (in respect to the ul ID provided) so that each letter begins its animation after the specified delay*/
+
+#firstWord li:nth-child(1)
+{
+	animation-delay: 0s;
+}
+#firstWord li:nth-child(2)
+{
+	animation-delay: .1s;
+}#firstWord li:nth-child(3)
+{
+	animation-delay: .2s;
+}
+#firstWord li:nth-child(4)
+{
+	animation-delay: .1s;
+}
+#firstWord li:nth-child(5)
+{
+	animation-delay: .3s;
+}
+#firstWord li:nth-child(6)
+{
+	animation-delay: .4s;
+}
+#firstWord li:nth-child(7)
+{
+	animation-delay: .5s;
+}
+
+#secondWord li:nth-child(1)
+{
+	animation-delay: .5s;
+}
+#secondWord li:nth-child(2)
+{
+	animation-delay: .6s;
+}
+#secondWord li:nth-child(3)
+{
+	animation-delay: .7s;
+}
+
+#thirdWord li:nth-child(1)
+{
+	animation-delay: .9s;
+}
+#thirdWord li:nth-child(2)
+{
+	animation-delay: 1s;
+}
+#thirdWord li:nth-child(3)
+{
+	animation-delay: 1.2s;
+}
+#thirdWord li:nth-child(4)
+{
+	animation-delay: 1.6s;
+}
+#thirdWord li:nth-child(5)
+{
+	animation-delay: 1.5s;
+}
+#thirdWord li:nth-child(6)
+{
+	animation-delay: 1.9s;
+}
+

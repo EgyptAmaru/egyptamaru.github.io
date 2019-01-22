@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<title>The Magic Dance</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js" defer></script>
+		<script type='text/javascript' src='DynCSS-master/lib/dyncss.js'  defer></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" defer>
+
+		
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/ defer>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.0/slick/slick-theme.css"/ defer>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" defer></script>
+
+		<link rel="stylesheet" type="text/css" href="index.css" defer> 
+		<script type="text/javascript" src="index.js" defer></script>
+	</head>
+
+	<body>
+
+
+		<div class = "layer">
+			<video autoplay muted loop ID="video">
+  				<source src="blue.mp4" type="video/mp4">
+			</video>
+		</div>
+
+		<br> <br> <br> <br> <br> <br>  
+			<h1 ID = "Title" class = "animated fadeInUp" >The Magic Dance</h1> <br>
+		<br> <br> <br> <br> <br> <br> <br> 
+
+		<div class = "blades" ID = "blade1">
+			<img ID = "blade" src="blade.png">
+		<div class = "blades"> <br> <br> <br> <br> <br> <br> <br> 
+
+
+		<div ID = "Beginning">
+			<div class = "Notes2" data-slick='{"slidesToShow": 1, "slidesToScroll": 1}'>
+			  <div class = Notes3><h3>Description</h3>
+			  	<p>This project is a continuation of a previous assignment, both which I completed by myself. I tried emulating the concept of deception that is central to the story in the interface of the website. I focused on presentation, styling, and animations while cleaning up the files, specifically, my JavaScript code.</p>
+			  </div> 
+			  <div class = Notes3><h3>Design Considerations</h3>
+			  	<p>In styling and animating the interface, I focused on having a natural flow. This I achieved by integrating transitions and events based on mouseovers and scrolls. Spacing and timing were important and required basic HTML formatting as well as JavaScript functions, arrays, DOM manipulations, libraries, conditionals, and CSS keyframes.</p>
+			  </div>
+
+			  <div class = Notes3><h3>Challenges</h3>
+			  	<p>Learning how to use libraries required time. Debugging became more common as I added interdependent features. For example, if animations overlapped, they often interrupted the program and as elements disappeared and others appeared, controlling their position became necessary. Accurate timing was vital.</p>
+			  </div>
+			  <div class = Notes3><h3>Technology & Acknowledgements</h3>
+			  	<p>I used 3 libraries: Animate.CSS, DynCSS, and Slick, including corresponding CSS files for the latter. As mentioned, I used many JavaScript features, notably, by making use of Ajax. I referenced GitHub, StackOverflow, W3Schools, YouTube tutorials, class lectures, library websites and other webpages.</p>
+			  </div>
+			</div>
+
+			<button ID = "BeginButton" onClick='javascript:begin()'> Begin Story >> </button>
+		</div>
+
+		<div ID = "End">
+			<div class = 'Notes1' style= "display: none"> 
+				<div ID = 'Words'> </div> 
+					<img class = "Jesters" ID = "1" src= "Jester.jpg" onClick='javascript:magic("1")'>
+					<img class = "Jesters" ID = "2" src= "JesterDrawing.jpg" onClick ='javascript:magic("2")'>
+				<div ID = 'Input'></div> 
+				<div ID = 'MessageSpace'></div> 
+				<button ID = 'NextButton' class = 'animated bounceIn' onClick='javascript:main()'> Next page >> </button> 
+			</div> 
+	
+			<div class = 'center' style = "display: none">
+				<div class = "hoverSpace">
+					<ul ID = 'firstWord'>
+						<li>S</li>
+						<li>o</li>
+						<li>m</li>
+						<li>e</li>
+						<li>h</li>
+						<li>o</li>
+						<li>w</li>
+					</ul>
+					<ul ID = 'secondWord'>
+						<li>y</li>
+						<li>o</li>
+						<li>u</li>
+					</ul>
+					<ul ID = 'thirdWord'>
+						<li>e</li>
+						<li>s</li>
+						<li>c</li>
+						<li>a</li>
+						<li>p</li>
+						<li>e</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<br> <br> <br> <br> <br> <br> <br><br><br><br><br>
+
+	</body>
+</html>
