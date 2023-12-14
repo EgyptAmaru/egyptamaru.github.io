@@ -73,7 +73,7 @@ function checkAnswer() {
 	}
 
 	else {
-		$("#MessageSpace").html("<div ID= 'Red' class = 'animated fadeIn'>" + "Hmm.. try again" + "</div>"); //if the user did not enter the right answer, display a message teling them to try again
+		$("#MessageSpace").html("<div ID= 'Red' class = 'animated fadeIn'>" + "Hmm.. try again." + "</div>"); //if the user did not enter the right answer, display a message teling them to try again
 	}
 }
 

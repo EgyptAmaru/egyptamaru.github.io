@@ -9,8 +9,16 @@ body {
 	font-size: 50px;
 	color: white;
     margin: auto; /*centers horizontally*/
-    
+   
     text-align: center;
+}
+
+#LandingMessage {
+	font-size: 18px;
+	color: white;
+    text-align: center;
+    margin: auto; /*centers horizontally*/
+    width: 300px;
 }
 
 #BeginButton {
@@ -100,13 +108,15 @@ p.Question { /*class added in JS*/
 
 div.Paws {
 	position: relative;
-	margin-top: -340px;
+	margin-top: -320px;
 }
 
 p.PawsMessage {
 	font-size: 18px;
 	color: white;
     text-align: center;
+    margin: auto; /*centers horizontally*/
+    width: 300px;
 }
 
 img.PawsImage {
