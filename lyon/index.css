@@ -1,0 +1,115 @@
+body {
+	font-size: 18px;
+	font-family: courier new;
+	background: black;
+	margin: 10px;
+}
+
+#Title {
+	font-size: 50px;
+	color: white;
+    margin: auto; /*centers horizontally*/
+    
+    text-align: center;
+}
+
+#BeginButton {
+	font-size: 18px;
+	font-family: courier new;
+	color: #4169E1;
+	text-decoration: underline;
+	background: black;
+	border: none;
+
+	margin: auto; /*centers horizontally*/
+    display:block;
+
+    animation-delay: 600ms;
+}
+
+div.Container {
+    color: black;
+	background: white;
+
+	
+	position: relative;
+	height: 225px; /*necessary in order to position input field*/
+    width: 500px;
+    margin: auto; /*centers horizontally*/
+
+
+    text-align: center;
+    justify-content: left;
+    padding: 25px; /*space between border and text (content)*/
+    padding-top: 10px; /*space between border and text (content)*/
+}
+
+
+input {
+	font-size: 16px;
+	font-family: courier new;
+	color: black;
+
+	width: 155px;
+	height: 24px;
+	margin: -8px;
+
+	position: absolute; /*positions it relative to its preceding ancestor (the Container class)*/
+	right: 373px;/*fixed from right corner of parent element (not from corner of window)*/
+	bottom: 70px;
+}
+
+#MessageSpace {
+	font-size: 16px;
+	color: #008000;
+	
+	margin: -5px;
+
+	position: absolute; /*positions it relative to its preceding ancestor (the Container class)*/
+	left: 28px;/*fixed from right corner of parent element (not from corner of window)*/
+	bottom: 40px;
+}
+
+
+#NextButton {
+	font-size: 18px;
+	font-family: courier new;
+	color: #4169E1;
+	text-decoration: underline;
+	background: white;
+	border: none;
+
+	position: absolute; /*positions it relative to its preceding ancestor (the Container class)*/
+	right: 40px; /*fixed 150 px from right corner of parent element (not from corner of window)*/
+	bottom: 30px; /*fixed 15px from the bottom of parent element*/
+
+}
+
+#Red { /*ID added in JS*/
+	color: #c80606;
+}
+
+p {
+	text-align: left;
+}
+
+p.Question { /*class added in JS*/
+	font-size: 24px;
+}
+
+
+div.Paws {
+	position: relative;
+	margin-top: -280px;
+}
+
+p.PawsMessage {
+	color: white;
+    text-align: center;
+}
+
+img.PawsImage {
+	width: 200px;
+	display: block; /*this tells the browser to treat the image as if it were a block element, not an inline element, thus allowing you to use the CSS margin property.*/
+	margin: auto; /*centers horizontally*/
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<title>Hi Lyon</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js" defer></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" defer>
+		<link rel="stylesheet" type="text/css" href="index.css" defer> 
+		<script type="text/javascript" src="index.js" defer></script>
+	</head>
+
+	<body>
+		<br> <br> <br> <br> <br> 
+		
+		<div ID = "Landing">
+				<h1 ID = "Title" class = "animated fadeInUp" >Hello</h1> <br>
+				<button ID = "BeginButton" class = "animated fadeInUp" onClick='javascript:begin()'>Begin Story</button>
+
+				<br> <br> <br> <br> <br> <br> <br> 
+		</div>
+
+		<div class = 'Container' style= "display: none">
+			<div ID = 'Words'> </div> 
+			<div ID = 'Input'></div> 
+			<div ID = 'MessageSpace'></div> 
+			<button ID = 'NextButton' class = 'animated bounceIn' onClick='javascript:main()'> Next >> </button> 
+		</div> 
+
+		<div class = 'Paws' style= "display: none">
+			<p class = 'PawsMessage'>Send this image to Leo.</p>
+			<img class = 'PawsImage' src = "paw_prints.jpg">
+		</div>
+
+		<br> <br> <br> <br> <br> <br> <br><br><br>
+
+	</body>
+</html>
