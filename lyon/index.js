@@ -68,7 +68,7 @@ function checkAnswer() {
 	}
 
 	else if (pageNumber === 3 && answer === "Answer3") {
-			$("#MessageSpace").html("<div class = 'animated fadeIn'>" + "100 point for Gryffindor!" + "</div>"); //tell the user they have gotten the correct answer
+			$("#MessageSpace").html("<div class = 'animated fadeIn'>" + "100 points for Gryffindor!" + "</div>"); //tell the user they have gotten the correct answer
 			button.style.display = "block"; //make the button on the page visible again
 	}
 

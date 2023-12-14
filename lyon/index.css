@@ -31,12 +31,10 @@ div.Container {
     color: black;
 	background: white;
 
-	
 	position: relative;
 	height: 300px; /*necessary in order to position input field*/
     width: 300px;
     margin: auto; /*centers horizontally*/
-
 
     text-align: center;
     justify-content: left;
@@ -50,12 +48,12 @@ div.Container {
 	font-family: courier new;
 	color: black;
 
-	width: 155px;
-	height: 24px;
+	width: 140px;
+	height: 22px;
 	margin: -8px;
 
 	position: absolute; /*positions it relative to its preceding ancestor (the Container class)*/
-	right: 373px;/*fixed from right corner of parent element (not from corner of window)*/
+	right: 185px;/*fixed from right corner of parent element (not from corner of window)*/
 	bottom: 70px;
 }
 
@@ -63,11 +61,13 @@ div.Container {
 	font-size: 16px;
 	color: #008000;
 	
+	width: 160px;
 	margin: -5px;
 
+	text-align: left;
 	position: absolute; /*positions it relative to its preceding ancestor (the Container class)*/
-	left: 28px;/*fixed from right corner of parent element (not from corner of window)*/
-	bottom: 40px;
+	left: 32px;/*fixed from right corner of parent element (not from corner of window)*/
+	top: 285px;
 }
 
 
@@ -80,7 +80,7 @@ div.Container {
 	border: none;
 
 	position: absolute; /*positions it relative to its preceding ancestor (the Container class)*/
-	right: 40px; /*fixed 150 px from right corner of parent element (not from corner of window)*/
+	right: 30px; /*fixed 150 px from right corner of parent element (not from corner of window)*/
 	bottom: 30px; /*fixed 15px from the bottom of parent element*/
 
 }
@@ -100,16 +100,17 @@ p.Question { /*class added in JS*/
 
 div.Paws {
 	position: relative;
-	margin-top: -280px;
+	margin-top: -340px;
 }
 
 p.PawsMessage {
+	font-size: 18px;
 	color: white;
     text-align: center;
 }
 
 img.PawsImage {
-	width: 200px;
+	width: 300px;
 	display: block; /*this tells the browser to treat the image as if it were a block element, not an inline element, thus allowing you to use the CSS margin property.*/
 	margin: auto; /*centers horizontally*/
 }
