@@ -73,11 +73,11 @@ div.Container {
 	font-size: 14px;
 	font-family: nanu;
 	color: black;
-	background: #d1d1d1;
+	background: white;
 	border-width: 1px;
 	border-color: black;
 
-	width: 78px;
+	width: 75px;
 	height: 28px;
 
 	position: absolute; /*positions it relative to its preceding ancestor (the Container class)*/
