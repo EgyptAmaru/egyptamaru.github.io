@@ -70,15 +70,16 @@ div.Container {
 }
 
 #subButton { /*element added using JS*/
-	font-size: 16px;
+	font-size: 14px;
 	font-family: nanu;
 	color: black;
+	background: white;
 
-	width: 65px;
+	width: 78px;
 	height: 28px;
 
 	position: absolute; /*positions it relative to its preceding ancestor (the Container class)*/
-	right: 128px;/*fixed from right corner of parent element (not from corner of window)*/
+	right: 110px;/*fixed from right corner of parent element (not from corner of window)*/
 	bottom: 130px;
 }
 
