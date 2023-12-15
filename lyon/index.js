@@ -2,9 +2,9 @@
 var pageNumber = 0; 
 
 //Create an array of strings to store the contents of each page
-var pageContent = ["<p class = 'Question'>Question 1</p><p>content 1</p>",
-"<p class = 'Question'>Question 2</p><p>content2</p>",
-"<p class = 'Question'>Question 3</p><p>content3</p>"];
+var pageContent = ["<p class = 'Question'>Question 1</p><p>On which date did you get the 1st Christmas sock?</p>",
+"<p class = 'Question'>Question 2</p><p>What is the last word I use in the 2nd note before I kiss you goodbye?</p>",
+"<p class = 'Question'>Question 3</p><p>What is the name of the song I refer to in the 3rd note?</p>"];
 
 //Store the element for the program button globally, since it will be accessed by various functions
 var button = document.getElementById("NextButton");
@@ -48,26 +48,32 @@ function nextPage(){
 
 //This function will return a string for an input text box or will return an empty string
 function inputField() { 
-		var actualInputField = '<form action = "javascript: checkAnswer();"><input ID = "Answer" class = "animated fadeIn" name = "answer" type = "text" autocomplete="off"></form>'; //Create an input text field. Autocomplete is used in order to get rid of the dropdown menu of the input element
-		return actualInputField;
+	if (pageNumber === 0) {
+		var actualInputField = '<form action = "javascript: checkAnswer();"><input ID = "Answer" class = "animated fadeIn" name = "answer" type = "date"><input ID = "subButton" type="submit"></form>'; //Create a dropdown for dates. Input type "submit" adds a button so user can submit the date they select.
 	}
+	else {
+		var actualInputField = '<form action = "javascript: checkAnswer();"><input ID = "Answer" class = "animated fadeIn" name = "answer" type = "text" autocomplete="off"></form>'; //Create an input text field. Autocomplete is used in order to get rid of the dropdown menu of the input element
+	}
+
+	return actualInputField;
+}
 
 //This function will be invoked for the first input text field, when the user presses "enter", and will check if the answer provided is suitable
 function checkAnswer() {
-	var answerElement = document.getElementById("Answer"); 
+	var answerElement = document.getElementById("Answer");
 	var answer = answerElement.value; //this line acceses the string value of the answer provided by the user
 
-	if (pageNumber === 1 && answer === "Answer1") {
+	if (pageNumber === 1 && answer === "2023-12-01") {
 			$("#MessageSpace").html("<div class = 'animated fadeIn'>" + "Correct!" + "</div>"); //tell the user they have gotten the correct answer
 			button.style.display = "block"; //make the button on the page visible again
 	}
 
-	else if (pageNumber === 2 && answer === "Answer2") {
+	else if (pageNumber === 2 && answer.toLowerCase() === "saxophone") {
 			$("#MessageSpace").html("<div class = 'animated fadeIn'>" + "Good job, Leoncito." + "</div>"); //tell the user they have gotten the correct answer
 			button.style.display = "block"; //make the button on the page visible again
 	}
 
-	else if (pageNumber === 3 && answer === "Answer3") {
+	else if (pageNumber === 3 && answer.toLowerCase() === "firework") {
 			$("#MessageSpace").html("<div class = 'animated fadeIn'>" + "100 points for Gryffindor!" + "</div>"); //tell the user they have gotten the correct answer
 			button.style.display = "block"; //make the button on the page visible again
 	}

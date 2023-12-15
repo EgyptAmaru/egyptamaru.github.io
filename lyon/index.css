@@ -1,6 +1,11 @@
+@font-face { /*custom font from Google fonts*/
+  font-family: nanu;
+  src: url(nanu_myeongjo-regular.ttf);
+}
+
 body {
 	font-size: 18px;
-	font-family: courier new;
+	font-family: nanu;
 	background: black;
 	margin: 10px;
 }
@@ -23,7 +28,7 @@ body {
 
 #BeginButton {
 	font-size: 18px;
-	font-family: courier new;
+	font-family: nanu;
 	color: #4169E1;
 	text-decoration: underline;
 	background: black;
@@ -51,18 +56,30 @@ div.Container {
 }
 
 
-#Answer { /*element added using JS*/
+#Answer{ /*element added using JS*/
 	font-size: 16px;
-	font-family: courier new;
+	font-family: nanu;
 	color: black;
 
-	width: 140px;
-	height: 22px;
-	margin: -8px;
+	width: 120px;
+	height: 24px;
 
 	position: absolute; /*positions it relative to its preceding ancestor (the Container class)*/
-	right: 185px;/*fixed from right corner of parent element (not from corner of window)*/
-	bottom: 70px;
+	right: 196px;/*fixed from right corner of parent element (not from corner of window)*/
+	bottom: 130px;
+}
+
+#subButton { /*element added using JS*/
+	font-size: 16px;
+	font-family: nanu;
+	color: black;
+
+	width: 65px;
+	height: 28px;
+
+	position: absolute; /*positions it relative to its preceding ancestor (the Container class)*/
+	right: 128px;/*fixed from right corner of parent element (not from corner of window)*/
+	bottom: 130px;
 }
 
 #MessageSpace {
@@ -74,14 +91,14 @@ div.Container {
 
 	text-align: left;
 	position: absolute; /*positions it relative to its preceding ancestor (the Container class)*/
-	left: 32px;/*fixed from right corner of parent element (not from corner of window)*/
-	top: 285px;
+	left: 35px;/*fixed from right corner of parent element (not from corner of window)*/
+	top: 222px;
 }
 
 
 #NextButton {
 	font-size: 18px;
-	font-family: courier new;
+	font-family: nanu;
 	color: #4169E1;
 	text-decoration: underline;
 	background: white;
@@ -108,7 +125,7 @@ p.Question { /*class added in JS*/
 
 div.Paws {
 	position: relative;
-	margin-top: -320px;
+	margin-top: -330px;
 }
 
 p.PawsMessage {
