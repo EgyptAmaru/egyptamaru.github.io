@@ -73,7 +73,9 @@ div.Container {
 	font-size: 14px;
 	font-family: nanu;
 	color: black;
-	background: white;
+	background: #d1d1d1;
+	border-width: 1px;
+	border-color: black;
 
 	width: 78px;
 	height: 28px;
