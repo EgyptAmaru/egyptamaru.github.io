@@ -81,7 +81,7 @@ div.Container {
 	height: 28px;
 
 	position: absolute; /*positions it relative to its preceding ancestor (the Container class)*/
-	right: 110px;/*fixed from right corner of parent element (not from corner of window)*/
+	right: 112px;/*fixed from right corner of parent element (not from corner of window)*/
 	bottom: 130px;
 }
 
