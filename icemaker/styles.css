@@ -1,0 +1,200 @@
+/* =========================
+   CSS Variables — Default Theme
+   ========================= */
+:root {
+  --bg-color: #f7f7f8;
+  --card-bg: #ffffff;
+  --text-primary: #1f2933;
+  --text-secondary: #6b7280;
+  --button-primary: #111827;
+  --button-secondary: #e5e7eb;
+  --button-text-light: #ffffff;
+  --radius: 14px;
+}
+
+/* =========================
+   Global Reset & Base Styles
+   ========================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;   /* top-aligned instead of centered */
+  justify-content: center;   /* horizontal center remains */
+  padding: 2rem 0;           /* optional top/bottom spacing */
+  overflow-y: auto;          /* allow scrolling for very tall content */
+  color: var(--text-primary);
+}
+
+/* =========================
+   Layout
+   ========================= */
+.game-container {
+  background: var(--card-bg);
+  width: 90%;
+  max-width: 720px;
+  padding: 3rem 2.5rem;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* =========================
+   Question Text
+   ========================= */
+.question {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 3rem;
+
+  opacity: 1;
+  transition: opacity 250ms ease-in-out;
+}
+
+/* Hidden state used during transition */
+.question.fade-out {
+  opacity: 0;
+}
+
+/* =========================
+   Buttons
+   ========================= */
+.button-row {
+  display: flex;
+  gap: 1rem;
+}
+
+button {
+  min-width: 120px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+.skip-btn {
+  background-color: var(--button-secondary);
+  color: var(--text-primary);
+}
+
+.skip-btn:hover {
+  background-color: #d1d5db;
+}
+
+.next-btn {
+  background-color: var(--button-primary);
+  color: var(--button-text-light);
+}
+
+.next-btn:hover {
+  background-color: #000000;
+}
+
+/* =========================
+   Dark Mode Theme
+   ========================= */
+body.dark {
+  --bg-color: #0f172a;
+  --card-bg: #020617;
+  --text-primary: #e5e7eb;
+  --text-secondary: #9ca3af;
+  --button-primary: #e5e7eb;
+  --button-secondary: #1f2937;
+  --button-text-light: #020617;
+}
+
+/* =========================
+   Christmas — Elegant Red Card with Gold Next Button
+   ========================= */
+body.christmas {
+  --bg-color: #ffffff;          /* page background */
+  --card-bg: #a71d2a;           /* elegant red card */
+
+  --text-primary: #ffffff;      /* question text */
+  --text-secondary: #ffffff;    /* secondary text same as primary */
+
+  --button-primary: #d6b25e;    /* gold button, same as underline */
+  --button-secondary: #ffffff;  /* Skip button white */
+  --button-text-light: #a71d2a; /* text on gold button: matches card */
+}
+
+/* Card styling */
+body.christmas .game-container {
+  background-color: var(--card-bg);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.1),
+    0 10px 30px rgba(0, 0, 0, 0.15);
+  border: none; /* remove border */
+  text-align: center;
+  padding: 3rem 2.5rem;
+  border-radius: 14px;
+}
+
+/* Question styling with gold underline and emoji */
+body.christmas .question {
+  color: var(--text-primary);
+  border-bottom: 2px solid #d6b25e; /* gold underline */
+  padding-bottom: 1.5rem;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+}
+
+/* Prepend emoji to every question using ::before */
+body.christmas .question::before {
+  font-size: 1.2em;
+  margin-right: 0.3em;
+}
+
+/* Buttons styling */
+body.christmas .next-btn {
+  background-color: var(--button-primary);
+  color: var(--button-text-light);
+  min-width: 120px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+body.christmas .next-btn:hover {
+  background-color: #c9a64f; /* slightly darker gold on hover */
+}
+
+body.christmas .skip-btn {
+  background-color: var(--card-bg);
+  color: var(--bg-color); /* black text */
+  border: 1px solid #e5e7eb;
+  min-width: 120px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+body.christmas .skip-btn:hover {
+  background-color: #f3f3f3; /* light grey hover */
+}
