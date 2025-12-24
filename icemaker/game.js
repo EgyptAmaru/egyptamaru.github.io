@@ -70,7 +70,7 @@ function showRandomQuestion() {
 
   if (!next) {
   const message = isChristmasTheme()
-    ? "All questions answered!\n🎄 Merry Christmas!"
+    ? "All questions answered!\n❄️ Merry Christmas!"
     : "All questions answered!";
 
   setQuestionText(message);
