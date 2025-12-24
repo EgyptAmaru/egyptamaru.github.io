@@ -24,7 +24,7 @@ async function loadQuestionsFromSheet() {
     questions = data.questions;
     remainingQuestions = [...questions];
 
-    showNextQuestion();
+    showRandomQuestion();
   } catch (error) {
     console.error(error);
     document.querySelector('.question').textContent =
