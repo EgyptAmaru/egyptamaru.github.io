@@ -69,9 +69,13 @@ function showRandomQuestion() {
   const next = getRandomQuestion();
 
   if (!next) {
-    setQuestionText("All questions answered!");
-    return;
-  }
+  const message = isChristmasTheme()
+    ? "All questions answered! 🎄 Merry Christmas!"
+    : "All questions answered!";
+
+  setQuestionText(message);
+  return;
+ }
 
   currentQuestion = next;
   lastSkippedQuestion = null; // reset skip block
@@ -93,6 +97,10 @@ function nextQuestion() {
   currentQuestion = null;
 
   showRandomQuestion();
+}
+
+function isChristmasTheme() {
+  return document.body.classList.contains('christmas');
 }
 
 // ---------------------------
