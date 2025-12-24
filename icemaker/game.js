@@ -18,6 +18,8 @@ async function loadQuestionsFromSheet() {
 
     const data = await response.json();
 
+    console.log('Backend response:', data);
+
     // IMPORTANT: extract the array
     questions = data.questions;
     remainingQuestions = [...questions];
