@@ -16,10 +16,15 @@ async function loadQuestionsFromSheet() {
       'https://icemaker-backend.vercel.app/api/questions'
     );
 
-    questions = await response.json();
+    const data = await response.json();
+
+    // IMPORTANT: extract the array
+    questions = data.questions;
     remainingQuestions = [...questions];
+
     showNextQuestion();
   } catch (error) {
+    console.error(error);
     document.querySelector('.question').textContent =
       "Failed to load questions.";
   }
