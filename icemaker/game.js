@@ -1,9 +1,3 @@
-// ---------------------------
-// Configuration
-// ---------------------------
-const SHEET_ID = '1z1HM1RjkY1cHyUmx28jf7j7tAiKZhGiRZAbwp8yXhUs';
-const API_KEY = 'AIzaSyAF6TUG3E2NhDn88m7hFyCsOXOI0zdjsYg';
-const RANGE = 'Sheet1!A2:A';
 
 // ---------------------------
 // Game state
@@ -15,23 +9,19 @@ let lastSkippedQuestion = null;
 // ---------------------------
 // Load questions from Google Sheets
 // ---------------------------
+
 async function loadQuestionsFromSheet() {
-  const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
-
   try {
-    const response = await fetch(url);
-    const data = await response.json();
+    const response = await fetch(
+      'https://icemaker-backend.vercel.app/api/questions'
+    );
 
-    if (!data.values || data.values.length === 0) {
-      setQuestionText("No questions found!");
-      return;
-    }
-
-    remainingQuestions = data.values.map(row => row[0]);
-    showRandomQuestion();
+    questions = await response.json();
+    remainingQuestions = [...questions];
+    showNextQuestion();
   } catch (error) {
-    console.error("Error loading questions:", error);
-    setQuestionText("Failed to load questions.");
+    document.querySelector('.question').textContent =
+      "Failed to load questions.";
   }
 }
 
