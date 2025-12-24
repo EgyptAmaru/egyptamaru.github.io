@@ -59,6 +59,7 @@ body {
   font-weight: 500;
   line-height: 1.4;
   margin-bottom: 3rem;
+  white-space: pre-line;
 
   opacity: 1;
   transition: opacity 250ms ease-in-out;
