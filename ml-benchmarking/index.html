@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ML Platform Benchmarking at Google — Egypt Amaru</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-left">
+    <a href="/">Portfolio</a>
+  </div>
+  <div class="nav-right">
+    <a href="https://github.com/egyptamaru" target="_blank">GitHub</a>
+    <span class="nav-dot">&middot;</span>
+    <a href="https://linkedin.com/in/egyptamaru" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="page-body">
+<div class="content">
+
+  <header class="project-header">
+    <h1 class="project-title">ML Platform<br>Benchmarking<br><span>at Google</span></h1>
+    <p class="project-framing">ML teams at Google had no baseline for platform effectiveness. UX teams had no repeatable system for producing one. I built a survey instrument and analysis pipeline that did.</p>
+  </header>
+
+  <div class="context-strip">
+    <div class="context-item">
+      <div class="context-label">Company</div>
+      <div class="context-value">Google</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Role</div>
+      <div class="context-value">UX Researcher</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Stakeholders</div>
+      <div class="context-value">Directors, Executives, PMs</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Year</div>
+      <div class="context-value">2025</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">What I Did</div>
+    <div class="section-body">
+      <p>I exclusively owned survey programming, led analysis, and collaborated with a lead UXR to build a quarterly benchmarking program. I handed off a modular codebase with documentation to support launches after I left.</p>
+    </div>
+  </div>
+
+  <div class="decision-log">
+    <div class="section-label">Decision Log</div>
+    <ul class="decision-list" id="decision-list">
+
+      <li class="decision-item track-fdh track-da" data-tracks="fdh,da">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">01</span>
+          <span class="decision-name">Structured instrumentation and analysis to absorb change</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-da">DA</span>
+            <span class="dtag dtag-fdh">FDH</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>I inherited a survey program that was still being defined. The first launch had revealed disagreement about what to measure, and by the time I joined to build a revised version, stakeholders were still negotiating scope, expanding the program beyond the original team brief to align with a Google-wide OKR. Alignment didn't conclude before launch. It continued through survey programming and into the analysis phase, with new cuts, filters, and metrics requested as the data came in.</p>
+          <p>The technical decisions I made throughout — <mark>JavaScript</mark> for survey logic, <mark>hierarchical dataframes</mark>, <mark>modular Python files</mark> — were all responses to the same condition: a program that needed to absorb change without being rebuilt from scratch each time.</p>
+        </div>
+      </li>
+
+      <li class="decision-item track-ae track-fdh" data-tracks="ae,fdh">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">02</span>
+          <span class="decision-name">Designed analysis structures that enabled exploration</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-ae">AE</span>
+            <span class="dtag dtag-fdh">FDH</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>The initial planned analysis was simple: differences between task ratings. But the significant differences in task frequency complicated things. Exploration was necessary and analysis multiplied. I adopted <mark>hierarchical dataframes</mark> to support the flexibility that a flat structure couldn't give. When I noticed the lead UXR doing her own ad hoc analysis on <mark>spreadsheet exports</mark>, I started sharing exports proactively.</p>
+          <p>Toward the end, knowing the program needed to repeat without me, I refactored the <mark>Colab notebook</mark> into <mark>modular Python files</mark> so the next person wouldn't walk into a sea of code.</p>
+        </div>
+      </li>
+
+      <li class="decision-item track-ae track-uxr" data-tracks="ae,uxr">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">03</span>
+          <span class="decision-name">Adopted JavaScript to handle logic that Qualtrics couldn't sustain</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-ae">AE</span>
+            <span class="dtag dtag-uxr">UXR</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>The survey logic was too interconnected for Qualtrics native features to handle cleanly. Participants moved through a branching sequence of theme selection, platform filtering, and task exclusions that fed into each other across questions. Tracking that in multiple places while the program kept evolving was a risk I didn't want to take. <mark>JavaScript</mark> let me define the logic once, update it in one place, and build for future rounds rather than just the current one. The <mark>Qualtrics API</mark> had outdated documentation, which cost me a few hours of trial and error.</p>
+        </div>
+      </li>
+
+      <li class="decision-item track-da track-uxr" data-tracks="da,uxr">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">04</span>
+          <span class="decision-name">Switched to bootstrap significance testing to handle low sample sizes</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-da">DA</span>
+            <span class="dtag dtag-uxr">UXR</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>When the survey counts came back lower than expected, I knew the <mark>t-test</mark> would be a risky option for significance testing considering its normal distribution assumptions. I welcomed this bump in the road, though, because I had recently been introduced to the <mark>bootstrap method</mark>. It makes no distributional assumptions and handles low sample sizes well.</p>
+          <p>Later, when the lead UXR needed to present findings to stakeholders, I generated <mark>bootstrap histograms</mark> to help her explain the method. She hadn't used it before and visual context made the difference.</p>
+        </div>
+      </li>
+
+      <li class="decision-item track-ae track-da track-uxr" data-tracks="ae,da,uxr">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">05</span>
+          <span class="decision-name">Spotted errors in my alpha calculation and wrote a programmatic fix</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-ae">AE</span>
+            <span class="dtag dtag-da">DA</span>
+            <span class="dtag dtag-uxr">UXR</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>At first I used a fixed 0.05 <mark>alpha level</mark>. The bootstrap analysis produced more significant results than I expected. Time to check my work. I hadn't accounted for multiple comparisons. A <mark>Bonferroni correction</mark> fixed it.</p>
+          <p>The second problem was more subtle. We'd aligned on a minimum response threshold per comparison group to avoid wild west analysis, which meant comparison counts varied by platform. I'd been correcting for total possible comparisons rather than actual ones. When I caught it, I wrote a function to <mark>calculate the alpha dynamically</mark>, which also handled last-minute response additions without manual recalculation each time.</p>
+        </div>
+      </li>
+
+      <li class="decision-item track-da track-uxr" data-tracks="da,uxr">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">06</span>
+          <span class="decision-name">Surfaced data limitations to stakeholders</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-da">DA</span>
+            <span class="dtag dtag-uxr">UXR</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>At times it felt like I was holding the line on what we could credibly claim. Stakeholders kept requesting data drills: significance testing at levels with sample sizes that couldn't support it, incorrectly inferring significance based on margins of error. Sometimes a well-explained limitation did it. Other times, the best thing I could do was document caveats.</p>
+        </div>
+      </li>
+
+      <li class="decision-item track-ae track-da track-fdh" data-tracks="ae,da,fdh">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">07</span>
+          <span class="decision-name">Shared analysis to inform a decision made by others</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-ae">AE</span>
+            <span class="dtag dtag-da">DA</span>
+            <span class="dtag dtag-fdh">FDH</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>Stakeholders needed a weighted effectiveness score per platform. How to weight was defined in rooms I couldn't join. I shared analysis to inform the discussions anyway: comparing candidate dimensions by identifying the highest signal tasks per metric to understand whether they were capturing distinct or overlapping information.</p>
+        </div>
+      </li>
+
+      <li class="decision-item track-ae track-da track-fdh" data-tracks="ae,da,fdh">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">08</span>
+          <span class="decision-name">Built a self-verification layer into the analysis</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-ae">AE</span>
+            <span class="dtag dtag-da">DA</span>
+            <span class="dtag dtag-fdh">FDH</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>There was no peer review on this project. I designed around that quietly by building verification into the analysis as I went. Some checks were preventative: validating that n thresholds were honored, confirming delta signs were consistent with significance outcomes, making sure visual and tabular results told the same story. Others caught real errors: pulling from the wrong spreadsheet, averaging averages instead of returning to raw data, handling NaN values downstream when they should have been addressed upstream. The Bonferroni correction came from a similar instinct.</p>
+          <p>Toward the end I raised the peer review gap as a consideration for future round timelines. It wasn't just a personal workaround. It was a program design issue.</p>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+  <div class="footer-nav">
+    <span></span>
+    <a href="../prioritization-of-audio-needs/index.html" class="next-project">Prioritization of Audio Needs</a>
+  </div>
+
+</div>
+</div>
+
+<script src="../script.js"></script>
+</body>
+</html>
