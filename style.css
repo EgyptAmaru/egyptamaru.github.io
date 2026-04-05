@@ -342,6 +342,34 @@ body.track-fdh .dtag-fdh { opacity: 1; }
 
 .decision-body p + p { margin-top: 12px; }
 
+.decision-body ol {
+  list-style: none;
+  counter-reset: decision-steps;
+  margin: 8px 0 12px 0;
+  padding: 0;
+}
+
+.decision-body ol li {
+  counter-increment: decision-steps;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--muted);
+  padding-left: 28px;
+  position: relative;
+  margin-top: 4px;
+}
+
+.decision-body ol li::before {
+  content: counter(decision-steps) ".";
+  position: absolute;
+  left: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--amber);
+  top: 3px;
+}
+
 .decision-body mark {
   background: transparent;
   color: var(--amber);
