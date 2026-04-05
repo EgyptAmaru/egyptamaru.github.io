@@ -349,7 +349,7 @@ body.track-fdh .dtag-fdh { opacity: 1; }
   padding: 0;
 }
 
-.decision-body ol li {
+.decision-item .decision-body ol li {
   counter-increment: decision-steps;
   font-family: 'Cormorant Garamond', serif;
   font-size: 17px;
@@ -360,7 +360,7 @@ body.track-fdh .dtag-fdh { opacity: 1; }
   margin-top: 4px;
 }
 
-.decision-body ol li::before {
+.decision-item .decision-body ol li::before {
   content: counter(decision-steps) ".";
   position: absolute;
   left: 0;
@@ -368,6 +368,11 @@ body.track-fdh .dtag-fdh { opacity: 1; }
   font-size: 13px;
   color: var(--amber);
   top: 3px;
+}
+
+.decision-body ol li strong {
+  color: var(--charcoal);
+  font-weight: 600;
 }
 
 .decision-body mark {
