@@ -16,6 +16,8 @@ function applyParams() {
   const validTracks = ['ae', 'da', 'uxr', 'fdh'];
   if (track && validTracks.includes(track)) {
     document.body.classList.add('track-' + track);
+
+    /* Sort decision log entries by track relevance */
     const list = document.getElementById('decision-list');
     if (list) {
       const items = Array.from(list.querySelectorAll('.decision-item'));
@@ -26,9 +28,27 @@ function applyParams() {
         item.querySelector('.decision-number').textContent = String(idx + 1).padStart(2, '0');
       });
     }
+
+    /* Propagate track parameter to all internal links */
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('http') && !href.startsWith('mailto')) {
+        const separator = href.includes('?') ? '&' : '?';
+        link.setAttribute('href', href + separator + 'track=' + track);
+      }
+    });
   }
   if (params.get('tags') === 'show') {
     document.body.classList.add('show-tags');
+
+    /* Propagate tags parameter to all internal links */
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('http') && !href.startsWith('mailto')) {
+        const separator = href.includes('?') ? '&' : '?';
+        link.setAttribute('href', href + separator + 'tags=show');
+      }
+    });
   }
 }
 

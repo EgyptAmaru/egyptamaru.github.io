@@ -371,6 +371,7 @@ body.track-fdh .dtag-fdh { opacity: 1; }
 
 .footer-nav a:hover { color: var(--amber); }
 .footer-nav .next-project::after { content: ' \2192'; color: var(--faint); }
+.footer-nav .prev-project::before { content: '\2190 '; color: var(--faint); }
 
 
 /* ══════════════════════════════════════════════════
@@ -384,8 +385,6 @@ body.track-fdh .dtag-fdh { opacity: 1; }
   gap: 40px;
   align-items: flex-start;
   margin-bottom: 56px;
-  padding-bottom: 48px;
-  border-bottom: 1px solid var(--rule);
 }
 
 .intro-text { flex: 1; }
