@@ -76,8 +76,8 @@
           <span class="decision-chevron">&#9660;</span>
         </button>
         <div class="decision-body">
-          <p>I had analyzed two diary studies investigating real-world contexts where people want to control sounds around them. After watching hundreds of videos, I arrived at a taxonomy I used to label entries. The result: a set of context variables that captured range and frequency counts signaling prevalence. But I wasn't done. Insights created desire for prioritization signal.</p>
-          <p>The challenge was compressing the data into a limited number of scenarios, each worded using a defensible structure, so I could test at scale. I was inspired by the product team's needs-based framework, but the research was foundational and not tied to a single product, so I defined a new set of needs grounded in the data we had collected. I then designed an insight structure using the context variables from the diary study analysis, modeled on <mark>user stories</mark>, with one deliberate constraint: each slot in the template had to map directly to the structure of an <mark>outcome statement</mark>. The conversion from qualitative insight to survey-testable item was built into the format from the start. The result: 18 outcome statements grounded in ecologically valid data.</p>
+          <p>I had analyzed two diary studies investigating real-world contexts where people want to control sounds around them. After watching hundreds of videos, I arrived at a taxonomy to label entries. The result: a set of context variables that captured range and frequency counts. But I wasn't done. Insights created desire for prioritization signal.</p>
+          <p>The challenge was compressing the data into a limited number of scenarios to test at scale. I was inspired by the product team's needs-based framework, but as my research was product agnostic, I defined a new set of needs grounded in collected data. I drew more inspiration from the typical structure of <mark>user stories</mark>, defining a new structure accounting for context variables. My vision from the start was to convert qualitative insights to survey-testable items. The result: 18 <mark>outcome statements</mark> grounded in ecologically valid data.</p>
         </div>
       </li>
 
@@ -92,8 +92,8 @@
           <span class="decision-chevron">&#9660;</span>
         </button>
         <div class="decision-body">
-          <p>The right survey design was not obvious. Stakeholders floated ideas like collecting ratings for multi-line scenario descriptions or using a ranking task. One posed a <mark>scale-use bias</mark> risk. The other was not much better considering that reliable ranking breaks down after about 8 items.</p>
-          <p>In search of ideas, I attended another team's internal presentation on how to combine a <mark>sequential monadic</mark> with a <mark>MaxDiff</mark> approach. Though their use case was for feature prioritization, I adapted their solution to my needs -- a survey instrument that forced respondents to make needs-based tradeoffs while also diving deeper with ratings for target metrics.</p>
+          <p>The right survey design was not obvious. Stakeholders floated ideas like collecting ratings for multi-line scenario descriptions, but that posed a <mark>scale-use bias</mark> risk. A ranking task was also considered, but that carried a reliability risk with 8+ items.</p>
+          <p>In search of ideas, I attended another team's internal presentation on how to combine a <mark>sequential monadic</mark> with a <mark>MaxDiff</mark> approach. I adapted the approach to create a survey instrument that forced respondents to make needs-based tradeoffs while also diving deeper with ratings for target metrics.</p>
         </div>
       </li>
 
@@ -108,8 +108,11 @@
           <span class="decision-chevron">&#9660;</span>
         </button>
         <div class="decision-body">
-          <p>Crafting a survey from rich data tested my balancing skills. My first move, using a sequential monadic component, expanded survey length considerably (4 metrics x 18 outcomes = 72 questions). My second move was to surface only 6 of the 18 outcomes per respondent to control length. But this created the risk of priming with whichever 6 outcomes a respondent was exposed to. My third move, therefore, was to move the sequential monadic component from the beginning to the end of the survey, after the MaxDiff task.</p>
-          <p>At every turn, my aim was to capture quality data without compromising the survey experience, doing so with the choice for hybrid methodology, serving a randomized subset of outcome statements, and using quotas to reach a minimum sample size per outcome.</p>
+          <p>Crafting a survey from rich data tested my balancing skills. My moves were:</p>
+          <p>1. Using a sequential monadic component, but this expanded survey length considerably (4 metrics x 18 outcomes = 72 questions).</p>
+          <p>2. Surface only 6 of the 18 outcomes per respondent to control length, but this created the risk of priming with whichever 6 outcomes a respondent was exposed to.</p>
+          <p>3. Move the sequential monadic component after the MaxDiff task to eliminate the priming risk.</p>
+          <p>At every turn, my aim was to capture quality data without compromising the survey experience.</p>
         </div>
       </li>
 
@@ -124,8 +127,12 @@
           <span class="decision-chevron">&#9660;</span>
         </button>
         <div class="decision-body">
-          <p>The MaxDiff task would tell us which outcomes were preferred. But most preferred is not the same as being the biggest opportunity. Some outcomes people already had satisfactory means to achieve. Other outcomes were needed rarely enough that prioritizing them would serve a narrow slice of use cases.</p>
-          <p>I selected four metrics for the sequential monadic section to push data from answering "what matters" to "where is the biggest gap." The importance metric carried over from the diary studies as a baseline. The location metric came from conversations with the team. Existing audio technology had been optimized for specific acoustic environments, so knowing where the highest-priority needs were happening gave a signal on product positioning and where to invest next. Satisfaction with current workarounds and frequency metrics came from patterns I noticed in the diary study data: some scenarios already had good-enough solutions while others were highly specific rather than typical experiences.</p>
+          <p>The MaxDiff task would tell us which outcomes were preferred. But not where the biggest opportunities lived.</p>
+          <p>I selected 4 metrics for the sequential monadic section to push data from answering "what matters" to "where is the biggest gap.":</p>
+          <p>1. Importance: A baseline measure that carried over from diary studies.</p>
+          <p>2. Location: Existing audio technology had been optimized for specific acoustic environments, so identifying overlap with user needs would inform product positioning and investment efforts.</p>
+          <p>3. Satisfaction with Workarounds: Diary study findings pointed to good-enough solutions in some scenarios.</p>
+          <p>4. Frequency: Diary study findings also suggested that some scenarios were infrequent, perhaps representing a narrow opportunity gap.</p>
         </div>
       </li>
 
@@ -141,8 +148,11 @@
           <span class="decision-chevron">&#9660;</span>
         </button>
         <div class="decision-body">
-          <p>Three data sources needed to converge into a single prioritization of outcomes: MaxDiff preference scores, sequential monadic ratings across four metrics, and diary study data. Each operated differently. The survey measured at the outcome statement level. The diary study measured at the need level, a coarser grain, but with ratings on importance and how bothersome an experience was that carried quantitative signal when grouped.</p>
-          <p>Where all three sources agreed, confidence was high. Where they disagreed, I flagged the outcome for closer examination. A need that ranked high in the diary study but low in the survey, for instance, warranted follow-up rather than dismissal because those ratings were grounded in actual experiences. As was with survey design, analysis called upon my ability to balance, not just the volume and range of data points, but my analytical ceiling at the time. Visual comparisons, like bubble charts, were an honest trick that helped identify patterns without overfitting a method to the data.</p>
+          <p>To get to a single list of ranked outcomes, I needed to converge 3 data sources:</p>
+          <p>1. MaxDiff Preference Scores: Measured at the outcome level.</p>
+          <p>2. Sequential Monadic Ratings: Also measured at the outcome level, but at 4 different angles.</p>
+          <p>3. Diary Study Data: Measured at the need level, a coarser grain, but with experience ratings that carried quantitative signal.</p>
+          <p>Where all three sources agreed, confidence was high. Where they disagreed, I flagged for closer examination. For example, a need that ranked high in the diary study but low in the survey warranted follow-up because ratings were grounded in actual experiences. I needed to balance the volume and range of data points with my analytical ceiling at the time. Visual comparisons, like bubble charts, were the honest trick that helped.</p>
         </div>
       </li>
 
@@ -158,7 +168,7 @@
         </button>
         <div class="decision-body">
           <p>The data cut across metrics, sources, and scales that needed to come together to form a ranked list. I had my work cut out. The goal was a composite score per outcome. The steps were to transform inputs so I could combine them.</p>
-          <p>For example, MaxDiff utilities were on a 0 to 1 scale, unlike the other metrics, so they had to be rescaled. Lower scores for satisfaction with workarounds corresponded to higher scores with other metrics; the scale had to be reversed so higher scores meant higher priority. What mattered was a systematic and meaningful ranking approach. Underlying data sources were the fun space, where stakeholders could explore why an outcome landed where it did.</p>
+          <p>For example, MaxDiff utilities had to be rescaled for parity with other metrics. Satisfaction with workarounds needed scale reversal for direction agreement across metrics. What mattered was having a systematic ranking approach paired with the richer underlying data, the fun space where stakeholders could explore the "why" behind rankings.</p>
         </div>
       </li>
 
@@ -190,9 +200,9 @@
           <span class="decision-chevron">&#9660;</span>
         </button>
         <div class="decision-body">
-          <p>The marketing team's segmentation tool was a spreadsheet where a researcher could paste answers to questions designed to identify one of 8 segments. As a post-collection step, I couldn't leverage it mid-survey. Without it, reaching the right segments meant over-recruiting, screening out respondents after they'd already been compensated, and cleaning up data after the fact.</p>
-          <p>I traced the spreadsheet's scoring logic, through dot products, cluster coefficients, and conditional logic. Though I didn't understand the reasoning behind all calculations, I understood the mechanics well enough to reimplement on <mark>Qualtrics</mark>. I validated my implementation through dozens of survey dry runs. For each submission, my algorithm accurately matched the original spreadsheet.</p>
-          <p>My hope was to build a reusable tool others could access through the Qualtrics library. But the MaxDiff survey type didn't support that, to my disappointment. In a later, unrelated study, the same need for mid-survey segmentation came up and the team contracted Qualtrics to rebuild the tool for roughly $10,000.</p>
+          <p>The marketing team's segmentation tool was a spreadsheet where a researcher could paste answers to questions designed to identify one of 8 segments. As a post-collection step, I couldn't leverage it mid-survey. Without it, fielding was resource intensive.</p>
+          <p>I traced the spreadsheet's scoring logic despite not fully understanding calculations. After combing through dot products, cluster coefficients, and conditional logic, I reimplemented the tool on <mark>Qualtrics</mark>. To validate accuracy, I ran dozens of survey dry runs, ensuring my algorithm's output matched the original spreadsheet.</p>
+          <p>The need for mid-survey segmentation came up in a later, unrelated study. To my disappointment, my implementation was not transferable due to survey type constraints. The team contracted Qualtrics for a rebuild that cost about $10,000.</p>
         </div>
       </li>
 
