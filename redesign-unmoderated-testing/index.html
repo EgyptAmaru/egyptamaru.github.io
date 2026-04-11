@@ -74,45 +74,14 @@
           <span class="decision-chevron">&#9660;</span>
         </button>
         <div class="decision-body">
-          <p>Our team regularly discussed how to label observations from unmoderated usability testing videos consistently across analysts. As I became acquainted with the program, I realized that consistent labeling did not just depend on shared judgment, but on a quality end-to-end process.</p>
-          <p>I started building out a process redesign on my own, one that incorporated my growing familiarity with tools like <mark>UserTesting</mark>, <mark>Qualtrics</mark>, and <mark>Google Sheets</mark>. The database design concepts I was learning through a SQL course I was enrolled in at the time were also influential. My vision was to centralize logic in Qualtrics and standardize the data architecture.</p>
-        </div>
-      </li>
-
-      <li class="decision-item track-ae track-fdh" data-tracks="ae,fdh">
-        <button class="decision-trigger" onclick="toggleDecision(this)">
-          <span class="decision-number">02</span>
-          <span class="decision-name">Separated data by entity to establish clear grain</span>
-          <span class="decision-tags-inline">
-            <span class="dtag dtag-ae">AE</span>
-            <span class="dtag dtag-fdh">FDH</span>
-          </span>
-          <span class="decision-chevron">&#9660;</span>
-        </button>
-        <div class="decision-body">
-          <p>The program had become a web of tangled spreadsheets. Many combined new and imported columns, which translated to high overlap and blurred source of truth. For example, my peers and I created custom scoring spreadsheets where we pulled task and test columns into one place. We'd copy our scores over to an intimidating, multi-source spreadsheet where it was easy to overwrite data, break a formula, or somehow mess things up.</p>
-          <p>Some contributors copied and pasted columns, while others relied on <mark>vlookups</mark>. Some were acquainted with the set up, while others, like new team members, needed to decipher it. The solution was to separate spreadsheets by entity, drawing lines based on grain. The launch of data collection was a coarse grain. Participant data was a finer grain. Since each participant was assigned multiple tasks, task scores operated at the finest grain.</p>
-        </div>
-      </li>
-
-      <li class="decision-item track-ae track-da" data-tracks="ae,da">
-        <button class="decision-trigger" onclick="toggleDecision(this)">
-          <span class="decision-number">03</span>
-          <span class="decision-name">Reshaped data from wide to long for scalability</span>
-          <span class="decision-tags-inline">
-            <span class="dtag dtag-ae">AE</span>
-            <span class="dtag dtag-da">DA</span>
-          </span>
-          <span class="decision-chevron">&#9660;</span>
-        </button>
-        <div class="decision-body">
-          <p>Wide formats were readable but not sustainable. I reshaped spreadsheets from <mark>wide to long</mark> to create stable structures. Long formats meant that new waves of testing added rows, not columns. The org-wide dashboard that consumed some of this data was already struggling with multiple, poorly managed sources. I couldn't fix that, but I could make the data feeding into it cleaner.</p>
+          <p>Our team regularly discussed how to consistently label videos of unmoderated usability testing. I came to realize that consistent labeling did not just depend on shared judgment, but on a quality end-to-end process.</p>
+          <p>I built a process redesign on my own, one that incorporated my growing familiarity with tools like <mark>UserTesting</mark>, <mark>Qualtrics</mark>, and <mark>Google Sheets</mark>. The database design concepts I was learning through a SQL course I was enrolled in at the time were also influential. My vision was to centralize logic in Qualtrics and standardize the data architecture.</p>
         </div>
       </li>
 
       <li class="decision-item track-ae track-uxr track-fdh" data-tracks="ae,uxr,fdh">
         <button class="decision-trigger" onclick="toggleDecision(this)">
-          <span class="decision-number">04</span>
+          <span class="decision-number">02</span>
           <span class="decision-name">Replaced manual coordination with logic-driven task assignment</span>
           <span class="decision-tags-inline">
             <span class="dtag dtag-ae">AE</span>
@@ -123,14 +92,14 @@
         </button>
         <div class="decision-body">
           <p>The program measured usability for 40 user journeys across 5 device types. Test waves had to be carefully coordinated to satisfy screening criteria, task pre-requisites, and a target sample size of 20. The pre-launch process was tedious and locked task assignment into a fixed sequence.</p>
-          <p>This is where I saw the potential for Qualtrics. It unlocked access to randomization, constraint tracking, and even assignment. Qualtrics could store user data (e.g., Premium vs non-Premium, iOS vs Android, device ownership) to assign relevant tasks only and track user journey start and end points to construct a logical sequence. All this while randomizing to resemble the range of ways people use a product like YouTube.</p>
+          <p>This is where I saw the potential for Qualtrics. It unlocked randomization, even assignment, constraint tracking, and user metadata storage (e.g., Premium vs non-Premium, iOS vs Android, device ownership). Together these ensured only relevant tasks were assigned, in a logical sequence, resembling the many possible ways people use YouTube.</p>
           <p>UserTesting was not forgotten. It offered a user panel and screen recording capabilities that the program relied on. Integration let each tool do what it did best.</p>
         </div>
       </li>
 
       <li class="decision-item track-ae" data-tracks="ae">
         <button class="decision-trigger" onclick="toggleDecision(this)">
-          <span class="decision-number">05</span>
+          <span class="decision-number">03</span>
           <span class="decision-name">Used URL parameters to create a shared key across tools</span>
           <span class="decision-tags-inline">
             <span class="dtag dtag-ae">AE</span>
@@ -139,6 +108,37 @@
         </button>
         <div class="decision-body">
           <p>Research participants were sourced and screened in UserTesting and then linked to Qualtrics for task assignment. I used <mark>URL parameters</mark> to pass the study and participant ID from one platform to the other. This gave the datasets a shared key for joining later while maintaining the boundary between what I designed each tool for.</p>
+        </div>
+      </li>
+
+      <li class="decision-item track-ae track-fdh" data-tracks="ae,fdh">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">04</span>
+          <span class="decision-name">Separated data by entity to establish clear grain</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-ae">AE</span>
+            <span class="dtag dtag-fdh">FDH</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>The program had become a web of tangled spreadsheets. Many contributors combined new and imported columns, which led to high overlap and blurred source of truth. For example, my peers and I created custom spreadsheets that pulled scoring-relevant columns into one place. We'd then port our scores over to an intimidating, multi-source spreadsheet where it was easy to overwrite data, break a formula, or somehow mess things up.</p>
+          <p>Some contributors copied and pasted columns, while others relied on vlookups. Some were acquainted with the set up, while others, like new team members, needed to decipher it. The solution was to separate spreadsheets by entity, drawing lines based on grain. The launch of data collection was a coarse grain. Participant data was a finer grain. Since each participant was assigned multiple tasks, task scores operated at the finest grain.</p>
+        </div>
+      </li>
+
+      <li class="decision-item track-ae track-da" data-tracks="ae,da">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">05</span>
+          <span class="decision-name">Reshaped data from wide to long for scalability</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-ae">AE</span>
+            <span class="dtag dtag-da">DA</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>Wide formats were readable but not sustainable. I reshaped spreadsheets from <mark>wide to long</mark> to create stable structures. Long formats meant that new waves of testing added rows, not columns. The org-wide dashboard that consumed some of this data was already struggling with multiple, poorly managed sources. I couldn't fix that, but I could make the data feeding into it cleaner.</p>
         </div>
       </li>
 
@@ -154,9 +154,9 @@
           <span class="decision-chevron">&#9660;</span>
         </button>
         <div class="decision-body">
-          <p>Separating data by entity addressed longstanding issues, but it created a new one: team members still needed views that combined fields across sheets. The program manager used score aggregates to prioritize bug filings. Analysts built custom workspaces to rate video sessions. Stakeholders pulled ad hoc views when the dashboard wasn't enough.</p>
-          <p>I defined a system of <mark>primary and foreign keys</mark> to make joining possible without duplicating raw data. I wrote <mark>vlookups</mark> that referenced column names so team members could move columns without breaking anything. I imported external spreadsheets so changes to shared definitions, like scoring guidelines and task success criteria, propagated automatically to any sheet referencing them.</p>
-          <p>The hardest part was proposing how to maintain it. I left the team with a short set of rules: keep raw and calculated data separate, don't rename columns, use this formula to build your configured view.</p>
+          <p>Separating data by entity addressed longstanding issues, but it created a new one: team members still needed views that combined fields across sheets. More specifically, the program manager used views of score aggregations, researchers still needed custom workspaces to rate video sessions, and others pulled ad hoc views when the dashboard wasn't enough.</p>
+          <p>I defined a system of <mark>primary and foreign keys</mark> to make joining possible without duplicating raw data. I wrote vlookups that referenced column names so team members could move columns without breaking anything. I imported external spreadsheets so changes to shared definitions, like scoring guidelines and task success criteria, propagated automatically to any sheet referencing them.</p>
+          <p>I left the team with a short set of maintenance rules: "keep raw and calculated data separate", "don't rename columns", "use this formula to build your configured view."</p>
         </div>
       </li>
 
