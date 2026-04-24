@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHaiN — Egypt Amaru</title>
+
+<!-- Open Graph -->
+<meta property="og:title" content="CHaiN">
+<meta property="og:description" content="The end of the research-to-insights pipeline is a high lift stage. I built a tool that encodes my qualitative UX research experience to handle analysis and reporting at scale.">
+<meta property="og:image" content="https://egyptamaru.github.io/og-chain.png">
+<meta property="og:url" content="https://egyptamaru.github.io/chain">
+<meta property="og:type" content="article">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-left">
+    <a href="/">Portfolio</a>
+  </div>
+  <div class="nav-right">
+    <a href="https://github.com/egyptamaru" target="_blank">GitHub</a>
+    <span class="nav-dot">&middot;</span>
+    <a href="https://linkedin.com/in/egyptamaru" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="page-body">
+<div class="content">
+
+  <header class="project-header">
+    <h1 class="project-title">CH<span>ai</span>N</h1>
+    <p class="project-framing">The end of the research-to-insights pipeline is a high lift stage for projects that generate qualitative data. As sample size increases, so does required effort. I built a tool that encodes my qualitative UX research experience to handle analysis and reporting at scale while keeping human review and judgment at critical points.</p>
+  </header>
+
+  <div class="context-strip">
+    <div class="context-item">
+      <div class="context-label">Company</div>
+      <div class="context-value">Independent</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Role</div>
+      <div class="context-value">Designer and Developer</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Target Users</div>
+      <div class="context-value">Qualitative Researchers</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Year</div>
+      <div class="context-value">2025</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">What I Did</div>
+    <div class="section-body">
+      <p>I independently designed and developed CHaiN over 8 months across roughly 15 iterations. I owned the full scope: architecture, pipeline design, and export system. CHaiN is in active development with a planned roadmap of additional capabilities.</p>
+    </div>
+  </div>
+
+  <div class="decision-log">
+    <div class="section-label">Decision Log</div>
+    <ul class="decision-list" id="decision-list">
+
+      <li class="decision-item track-ae track-da track-uxr" data-tracks="ae,da,uxr">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">01</span>
+          <span class="decision-name">Constructed a 5-stage insight pipeline to balance cost and quality</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-ae">AE</span>
+            <span class="dtag dtag-da">DA</span>
+            <span class="dtag dtag-uxr">UXR</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>Sending all input files to the Gemini API in a single request posed 2 risks: request failure or vague, incomplete responses. Request failure results from exceeding token limits. Vague, incomplete responses result from the model processing too much data at once. Sequential prompting addressed both.</p>
+          <p>The full insight pipeline runs 5 stages:</p>
+          <ol>
+            <li><strong>Batch Analysis</strong>: Extracts insights per file</li>
+            <li><strong>Cross-File Synthesis</strong>: Combines and reduces insights across files</li>
+            <li><strong>Thematic Grouping</strong>: Assigns a theme label to each insight</li>
+            <li><strong>Group Data Generation</strong>: Populates the group structure</li>
+            <li><strong>Executive Summary</strong>: Creates a summary of insights and recommendations</li>
+          </ol>
+          <p>Model selection and temperature are set per stage based on cost and quality tradeoffs. <mark>Gemini Flash-lite</mark> handles analysis of individual files because a more advanced, expensive model isn't required. <mark>Gemini Flash</mark> handles synthesis and thematic grouping because these stages don't have a human review gate and quality preservation is the priority. Temperature is fixed at 0.3 for thematic grouping for deterministic results. Inconsistent theme labels would cause the grouping logic to fail downstream.</p>
+        </div>
+      </li>
+
+      <li class="decision-item track-ae track-da" data-tracks="ae,da">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">02</span>
+          <span class="decision-name">Defined a single-source-of-truth schema with dynamic retrieval to control model output</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-ae">AE</span>
+            <span class="dtag dtag-da">DA</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>I used a <mark>JSON schema</mark> to define a data structure for all outputs. I quickly learned that it was not enough to specify which fields to populate in the schema when making API calls. Prompt instructions didn't guarantee compliance. To put out fires of inconsistent output, I relied on <mark>defensive programming</mark>. Until I found a better solution: filtering the schema using pipeline context.</p>
+          <p>I filtered the schema so that each stage of the pipeline used only relevant fields. This spared me from the more cumbersome, downstream cleanup. I also filtered the schema based on whether the provided research data were images or text, since input type determines which fields are relevant. <mark>Dynamic retrieval</mark> forces the model to concentrate on the correct fields, reducing the need for defensive programming and limiting each call to only the fields relevant to that stage. It also protects a user's time investment by minimizing the chance of vague or misaligned insights at the second review gate.</p>
+        </div>
+      </li>
+
+      <li class="decision-item track-ae track-uxr track-fdh" data-tracks="ae,uxr,fdh">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">03</span>
+          <span class="decision-name">Built review gates at points where researcher input matters most</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-ae">AE</span>
+            <span class="dtag dtag-uxr">UXR</span>
+            <span class="dtag dtag-fdh">FDH</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>When I tested an early version of CHaiN with UX research peers, it became clear that automation had drawbacks. Full automation didn't build user comprehension and trust. Incorporating AI amplified the tool's capabilities -- and researcher skepticism. As a UX researcher familiar with the broader field's reservations and my own experience with the limitations of AI-assisted analysis, I knew I had to find an optimal human-AI balance. I placed 2 review gates where researcher input has the most downstream impact.</p>
+          <p>The first gate follows project detail extraction: a missing or unclear project objective propagates through every subsequent pipeline stage, so input here has the highest leverage of any intervention point. While standard to formally document a research plan, if and how this is done varies widely across individuals and teams. Requiring a complete and reviewed project overview was my way of enforcing a principled research practice.</p>
+          <p>The second gate follows insight generation, giving the researcher a final opportunity to revise before the pipeline commits to generating exports. This isn't just a usability consideration. It is a way to build user trust and ownership, a prerequisite for CHaiN being used at all.</p>
+        </div>
+      </li>
+
+      <li class="decision-item track-ae track-uxr" data-tracks="ae,uxr">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">04</span>
+          <span class="decision-name">Parameterized insight reduction to model how researchers condense qualitative data</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-ae">AE</span>
+            <span class="dtag dtag-uxr">UXR</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>More research data meant more insights were generated by CHaiN. But volume and insight count don't have a 1:1 relationship in real analysis. UX researchers often condense large amounts of data to a digestible number of insights and do so by aggressively trimming redundancy while capturing nuance. This is an art form. And I needed a way to represent it as code.</p>
+          <p>My goal was to specify the insight count in the cross-file synthesis stage. At first, I divided the number of insights generated by file analysis by the total number of analyzed files. However, this returned the same number regardless of how many files were analyzed. I needed a formula that was responsive to data volume.</p>
+          <p>I defined a <mark>linear reduction formula</mark> to calculate a number proportional to volume. I chose the 0.65 reduction factor to control for the saturation that happens as sample size grows. At this value, the formula cuts insight redundancy with enough strength while exercising restraint to preserve nuance. I also defined a floor of 6 so the formula never reduces below a meaningful minimum for a substantive report.</p>
+        </div>
+      </li>
+
+      <li class="decision-item track-ae track-da" data-tracks="ae,da">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">05</span>
+          <span class="decision-name">Engineered a spreadsheet to function as both an export and import file</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-ae">AE</span>
+            <span class="dtag dtag-da">DA</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>As I arrived at a functional version of CHaiN, I began to think of how to engineer value. I'd already invested a good amount of time designing and developing a way to structure and analyze data. To distill more value, I shifted focus to generating multiple output formats, including a Google Sheets export.</p>
+          <p>A spreadsheet export is not a very attractive format. Yet, it creates a node for 2 user journeys: (1) Building a dashboard or insights repository and (2) Re-entering CHaiN's pipeline. Researchers could update spreadsheet content and regenerate a report. Or use the same content with a different Google Slides template to change the visual design. The value is in paying for the analysis cost only once, which is meaningful, especially at scale.</p>
+          <p>Here was the catch: Translating the multiple levels (project details, insights, groups, summary) of the <mark>JSON object</mark> to the 2D shape of a spreadsheet. My solution was to use <mark>dot notation</mark> to represent hierarchy. On import, the dot-separated keys are parsed to reconstruct the original nested object.</p>
+        </div>
+      </li>
+
+      <li class="decision-item track-ae track-uxr track-fdh" data-tracks="ae,uxr,fdh">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">06</span>
+          <span class="decision-name">Engineered 3 export formats from 1 analysis run</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-ae">AE</span>
+            <span class="dtag dtag-uxr">UXR</span>
+            <span class="dtag dtag-fdh">FDH</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>The JSON object was the source of truth for report content. It was a deliberate architectural choice that governed what and how content was rendered across 3 export formats. Each format offers something unique:</p>
+          <ol>
+            <li><strong>Slides Report</strong>: An expected stakeholder deliverable.</li>
+            <li><strong>Sheets File</strong>: Functions as both an export and import file.</li>
+            <li><strong>HTML Report</strong>: A portable, interactive format.</li>
+          </ol>
+          <p>The HTML report opens the door to 2 main things:</p>
+          <ol>
+            <li><strong>Compelling Presentation</strong>: Standard deliverables constrain creativity. An HTML format unlocks animated transitions that add character and polish.</li>
+            <li><strong>Interactivity</strong>: Elements of play, like interactivity, make information memorable. For instance, quizzes offer a new way to engage with research content.</li>
+          </ol>
+          <p>The MVP for an HTML report was scoped to include both animated transitions and insight quizzes. These were differentiating features that made the analysis cost worth paying.</p>
+        </div>
+      </li>
+
+      <li class="decision-item track-ae track-fdh" data-tracks="ae,fdh">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">07</span>
+          <span class="decision-name">Organized the codebase to be scalable</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-ae">AE</span>
+            <span class="dtag dtag-fdh">FDH</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>The tool's predecessor lived in a single Apps Script file bound to a Google Sheets file. The spreadsheet was where users needed to enter the text that would be pulled into a Google Slides report. There were several limitations here: (1) A utilitarian interface, (2) functionality bound to Google's ecosystem, and (3) maintenance friction. The 2025 rebuild reacted to these constraints.</p>
+          <p>It would have been convenient to use a Google Form as the new user interface. Instead, I opted for an <mark>HTML form</mark>, trading in extra effort in return for tool portability. I wanted flexible architecture. Building to reduce the dependency on Google's system was a way to design for future versions that might need to live outside it. In the same spirit, I adopted the <mark>Bootstrap framework</mark>. Its grid system worked across device types without ongoing upkeep, a practical choice for scaling and maintaining the codebase.</p>
+          <p>As I scaled, the need for modularity grew. I organized code into a family of Apps Script files. This made debugging and iteration easier and kept the code reusable. For instance, in a separate project, I used one of the files as a library to automate a Slides export. Frontloading the work of good architecture has paid off as I continue building.</p>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+  <div class="footer-nav">
+    <a href="../redesign-unmoderated-testing/index.html" class="prev-project">Redesigning an Unmoderated Testing Program at YouTube</a>
+    <span></span>
+  </div>
+
+</div>
+</div>
+
+<script src="../script.js"></script>
+</body>
+</html>
