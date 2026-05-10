@@ -382,6 +382,36 @@ body.track-fdh .dtag-fdh { opacity: 1; }
 }
 
 
+/* ── ARTIFACT LINK BUTTON ── */
+
+.artifact-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 0 8px;
+}
+
+.artifact-link a {
+  display: inline-block;
+  padding: 12px 32px;
+  border: 1px solid var(--amber);
+  border-radius: 4px;
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.artifact-link a:hover {
+  color: var(--amber);
+  border-color: var(--amber);
+  background: var(--amber-lt);
+}
+
+
 /* ── FOOTER NAV ── */
 
 .footer-nav {
