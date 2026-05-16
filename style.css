@@ -19,8 +19,10 @@
   --teal-lt:   rgba(107,158,120,0.08);
   --rose:      #b87070;
   --rose-lt:   rgba(184,112,112,0.08);
-  --blue:      #5a7a8a;
-  --blue-lt:   rgba(90,122,138,0.08);
+  --blue:        #5a7a8a;
+  --blue-lt:     rgba(90,122,138,0.08);
+  --periwinkle:  #9999dd;
+  --periwinkle-lt: rgba(153,153,221,0.08);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -381,6 +383,41 @@ body.track-fdh .dtag-fdh { opacity: 1; }
   font-style: normal;
 }
 
+/* ── IDENTIFIER CHIPS ── */
+/* Use <span class="identifier"> for technical identifiers: model names,
+   file names, function names, CLI commands. Override color per page
+   using body.page-{accent}. Size is relative to parent so it scales
+   proportionally with any parent font-size change. */
+.decision-body .identifier {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78em;
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: rgba(232,228,220,0.20);
+  color: var(--muted);
+}
+
+/* Per-page accent overrides */
+body.page-periwinkle .decision-body .identifier {
+  color: var(--periwinkle);
+}
+
+body.page-amber .decision-body .identifier {
+  color: var(--amber);
+}
+
+body.page-teal .decision-body .identifier {
+  color: var(--teal);
+}
+
+body.page-rose .decision-body .identifier {
+  color: var(--rose);
+}
+
+body.page-blue .decision-body .identifier {
+  color: var(--blue);
+}
+
 
 /* ── ARTIFACT LINK BUTTON ── */
 
@@ -546,10 +583,11 @@ body.track-fdh .dtag-fdh { opacity: 1; }
 .case-study-card.live:hover { background: var(--surface2); cursor: pointer; }
 .case-study-card.coming { cursor: default; }
 
-.card-accent-amber  { border-left: 1px solid var(--amber); }
-.card-accent-teal   { border-left: 1px solid var(--teal); }
-.card-accent-blue   { border-left: 1px solid var(--blue); }
-.card-accent-rose   { border-left: 1px solid var(--rose); }
+.card-accent-amber      { border-left: 1px solid var(--amber); }
+.card-accent-teal       { border-left: 1px solid var(--teal); }
+.card-accent-blue       { border-left: 1px solid var(--blue); }
+.card-accent-rose       { border-left: 1px solid var(--rose); }
+.card-accent-periwinkle { border-left: 1px solid var(--periwinkle); }
 
 .card-icon { margin-bottom: 20px; }
 .card-icon svg { display: block; }

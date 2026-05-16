@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ecommerce Behavior Analytics — Egypt Amaru</title>
+<meta property="og:title" content="Ecommerce Behavior Analytics">
+<meta property="og:description" content="A Kaggle dataset with 42 million ecommerce events. I built a dbt pipeline to transform them into sessionization, funnel conversion, and cohort retention models.">
+<meta property="og:image" content="https://egyptamaru.github.io/og-ecommerce-behavior-analytics.png">
+<meta property="og:url" content="https://egyptamaru.github.io/ecommerce-behavior-analytics">
+<meta property="og:type" content="article">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="page-periwinkle">
+
+<nav class="nav">
+  <div class="nav-left">
+    <a href="/">Portfolio</a>
+  </div>
+  <div class="nav-right">
+    <a href="https://github.com/egyptamaru" target="_blank">GitHub</a>
+    <span class="nav-dot">&middot;</span>
+    <a href="https://linkedin.com/in/egyptamaru" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<div class="page-body">
+<div class="content">
+
+  <header class="project-header">
+    <h1 class="project-title">Ecommerce<br>Behavior<br><span>Analytics</span></h1>
+    <p class="project-framing">A Kaggle dataset with 42 million ecommerce events. I built a dbt pipeline to transform them into sessionization, funnel conversion, and cohort retention models.</p>
+  </header>
+
+  <div class="context-strip">
+    <div class="context-item">
+      <div class="context-label">Company</div>
+      <div class="context-value">Independent</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Role</div>
+      <div class="context-value">Analytics Engineer</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Dataset</div>
+      <div class="context-value">42M ecommerce events</div>
+    </div>
+    <div class="context-item">
+      <div class="context-label">Year</div>
+      <div class="context-value">2026</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">What I Did</div>
+    <div class="section-body">
+      <p>I independently built a dbt pipeline against a Kaggle ecommerce dataset, modeling 42 million events across staging, intermediate, and mart layers. The project produces sessionization, funnel conversion, and cohort retention models, with every decision documented in the project README.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Codebase</div>
+    <div class="artifact-link">
+      <a href="https://github.com/EgyptAmaru/ecommerce-behavior-analytics" target="_blank">View on GitHub</a>
+    </div>
+  </div>
+
+  <div class="decision-log">
+    <div class="section-label">Decision Log</div>
+    <ul class="decision-list" id="decision-list">
+
+      <li class="decision-item track-ae" data-tracks="ae">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">01</span>
+          <span class="decision-name">Built locally and migrated to the cloud due to memory limits</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-ae">AE</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>My plan was to build locally with <mark>PostgreSQL</mark> to build quickly and then migrate to <mark>BigQuery</mark> to handle data volume once the models were stable. But when I tried to materialize the mart layer with <mark>dbt</mark>, I hit memory limits. The migration needed to happen earlier.</p>
+          <p>Migration followed a series of steps: installing the <span class="identifier">dbt-bigquery</span> adapter, configuring Google Cloud Platform, and updating my <span class="identifier">profiles.yml</span> and <span class="identifier">sources.yml</span> files. On GCP, I needed to create a project, enable the BigQuery API, configure a service account, and load data via Google Cloud Storage.</p>
+          <p>The first dbt run against BigQuery surfaced 3 syntax errors: interval arithmetic, argument order, and cast syntax. These were differences between PostgreSQL and BigQuery. None were conceptually difficult, but each required identifying the BigQuery equivalent before proceeding.</p>
+        </div>
+      </li>
+
+      <li class="decision-item track-ae track-da" data-tracks="ae,da">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">02</span>
+          <span class="decision-name">Sessionized at the intermediate layer, where business logic belonged</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-ae">AE</span>
+            <span class="dtag dtag-da">DA</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>The goal was to build reusable models. Staging needed to remain the data cleaning layer for cleaning: dropping columns, type casting, removing structural noise. <mark>Sessionization</mark> encodes business logic: the time gap that defines where one session ends and the next begins. My decision was to use the standard, 30-minute threshold, a choice that could change based on factors like the time gap distribution, business question behind analysis, or targeted user segment. By defining session IDs at the intermediate layer, changes propagate to downstream models without needing to reach back to staging.</p>
+        </div>
+      </li>
+
+      <li class="decision-item track-ae track-da" data-tracks="ae,da">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">03</span>
+          <span class="decision-name">Built the funnel pivot as a reusable intermediate model</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-ae">AE</span>
+            <span class="dtag dtag-da">DA</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>When I began analysis, I wrote nested queries in <mark>SQL</mark> to build up to the conversion rate calculation. When I translated my code to dbt, I had to identify the line between the intermediate and mart layer. The innermost layer pivots data to capture each user's first timestamp per funnel step. Any downstream model that needs funnel entry data can reference <span class="identifier">int_funnel</span> without reimplementing the pivot. As a result, the rest of the logic, which counts users per step, enforces order, and computes the conversion rate, moved downstream to the mart layer. Intermediate models hold building blocks. Marts hold answers.</p>
+        </div>
+      </li>
+
+      <li class="decision-item track-ae track-da" data-tracks="ae,da">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">04</span>
+          <span class="decision-name">Formatted mart models based on anticipated consumption</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-ae">AE</span>
+            <span class="dtag dtag-da">DA</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>It seemed reasonable for both mart tables to have a wide format, until I took a closer look. If the funnel changed, <span class="identifier">mrt_conversion</span> would need to, as well. By updating the grain to funnel transitions, there was no need to restructure if a funnel step was added or removed. The <span class="identifier">from_step</span> and <span class="identifier">to_step</span> columns push the changes to the row level and support filtering and aggregation by BI tools. <span class="identifier">mrt_retention</span> stayed wide. The retention grid is consumed as a matrix where cohorts on rows and days on columns is the insight. Long format would require the consuming tool to unpivot to resurface the insight.</p>
+          <p>I used <span class="identifier">UNION ALL</span> to stack funnel transition rows, but this meant the subquery I had used to aggregate user counts had to run twice, not a clean or performant implementation against 42 million rows. I used a <mark>CTE</mark> to define the aggregation once instead.</p>
+        </div>
+      </li>
+
+      <li class="decision-item track-ae track-da" data-tracks="ae,da">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">05</span>
+          <span class="decision-name">Added data quality tests at every layer</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-ae">AE</span>
+            <span class="dtag dtag-da">DA</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>Testing was built into the process from the beginning. With each layer, a <span class="identifier">schema.yml</span> was created: staging tests to ensure structural integrity of source data, intermediate tests to confirm grain and business logic, and mart tests to assert complete and valid outputs.</p>
+          <p>The <span class="identifier">not_null</span> test on <span class="identifier">int_funnel.view_time</span> failed on the first run. 160 rows had null <span class="identifier">view_time</span> values, meaning users with no view events were passing through because the funnel entry condition was missing. Without the test, the conversion rate would have been silently incorrect.</p>
+        </div>
+      </li>
+
+      <li class="decision-item track-ae track-da track-uxr" data-tracks="ae,da,uxr">
+        <button class="decision-trigger" onclick="toggleDecision(this)">
+          <span class="decision-number">06</span>
+          <span class="decision-name">Interpreted the pipeline output as a behavioral story</span>
+          <span class="decision-tags-inline">
+            <span class="dtag dtag-ae">AE</span>
+            <span class="dtag dtag-da">DA</span>
+            <span class="dtag dtag-uxr">UXR</span>
+          </span>
+          <span class="decision-chevron">&#9660;</span>
+        </button>
+        <div class="decision-body">
+          <p>The pipeline answers retention and conversion questions.</p>
+          <p>Behavior changes after users add to their cart. 11.1% of users who viewed a product in October 2019 added it to their cart, a fairly low rate. Of those, 49.8% completed a purchase, which suggests that users who add to their cart are largely intending to buy.</p>
+          <p>A large share of visits are by one-time users, not users with habitual engagement. Day 1 retention averaged roughly 15 to 20% of the day 0 user count across cohorts, dropping further by day 4.</p>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+
+  <div class="footer-nav">
+    <span></span>
+    <a href="../chain/index.html" class="next-project">CHaiN</a>
+  </div>
+
+</div>
+</div>
+
+<script src="../script.js"></script>
+</body>
+</html>

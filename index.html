@@ -3,9 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Egypt Amaru — Quantitative Research & Analytics</title>
+<title>Egypt Amaru — Analytics Engineer, Behavioral Data</title>
+<meta property="og:title" content="Egypt Amaru">
+<meta property="og:description" content="Analytics Engineer with 7 years building data systems at Google and Meta.">
+<meta property="og:image" content="https://egyptamaru.github.io/og-portfolio.png">
+<meta property="og:url" content="https://egyptamaru.github.io/">
+<meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+  .case-study-featured {
+    margin-bottom: 12px;
+  }
+  .case-study-card.featured {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 24px;
+    min-height: auto;
+    padding: 56px 24px;
+    align-items: center;
+  }
+  .case-study-card.featured .card-left {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .case-study-card.featured .card-icon {
+    margin-bottom: 0;
+  }
+  .case-study-card.featured .card-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  .case-study-card.featured .card-footer {
+    margin-top: 12px;
+  }
+  @media (max-width: 680px) {
+    .case-study-card.featured {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
 </head>
 <body>
 
@@ -23,7 +63,7 @@
   <div class="intro">
     <div class="intro-text">
       <h1 class="intro-name">Egypt Amaru</h1>
-      <div class="intro-role">Quantitative Research & Analytics</div>
+      <div class="intro-role">Analytics Engineer, Behavioral Data</div>
     </div>
     <div class="intro-photo">
       <img src="photo.jpg" alt="Egypt Amaru">
@@ -33,15 +73,65 @@
   <div class="narrative">
     <div class="section-label">About Me</div>
     <div class="narrative-body">
-      <p>The job title said researcher. But a lot of the actual work was something else.</p>
-      <p>At Google and Meta, I've spent 7 years making decisions that live closer to data engineering and analytics than to traditional UX research: redesigning data architectures to enable reliable joins, building modular Python codebases to produce org-wide metrics, developing a prompt-chained AI pipeline to transform unstructured research data into structured outputs, and writing custom tooling to quantify inter-rater agreement at scale.</p>
-      <p>The questions were always about human behavior. It's just that answering them rigorously kept leading me into data architecture, instrumentation design, and quantitative analysis at scale, which is where I do my best work.</p>
+      <p>The work I pursued at Google and Meta over 7 years was closer to data engineering and analytics than to traditional UX research: redesigning data architectures to scale a research program, building modular codebases to produce org-wide metrics, and developing a multi-stage AI pipeline to transform unstructured data into structured outputs.</p>
+      <p>My background in cognitive science comes from a fascination with how people think and behave. I interrogate the systems that produce insights because they determine quality and accuracy.</p>
     </div>
   </div>
 
   <div class="case-studies">
     <div class="section-label">Selected Work</div>
+
+    <!-- Featured card: Ecommerce Behavior Analytics -->
+    <div class="case-study-featured">
+      <a href="ecommerce-behavior-analytics/index.html" class="case-study-card featured live" style="border-left: 1px solid #9999dd;">
+        <div class="card-left">
+          <div class="card-icon">
+            <svg width="36" height="36" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3.00" y="6.50" width="54" height="11" fill="#505080"/>
+              <circle cx="30.00" cy="12.00" r="2.5" fill="#0f0f0f"/>
+              <rect x="12.00" y="24.50" width="36" height="11" fill="#6e6eb4"/>
+              <circle cx="21.00" cy="30.00" r="2.5" fill="#0f0f0f"/>
+              <circle cx="30.00" cy="30.00" r="2.5" fill="#0f0f0f"/>
+              <circle cx="39.00" cy="30.00" r="2.5" fill="#0f0f0f"/>
+              <rect x="19.50" y="42.50" width="21" height="11" fill="#9999dd"/>
+              <circle cx="26.50" cy="48.00" r="2.5" fill="#0f0f0f"/>
+              <circle cx="33.50" cy="48.00" r="2.5" fill="#0f0f0f"/>
+            </svg>
+          </div>
+          <div class="card-title">Ecommerce Behavior Analytics</div>
+        </div>
+        <div class="card-right">
+          <div class="card-description">A Kaggle dataset with 42 million ecommerce events. I built a dbt pipeline to transform them into sessionization, funnel conversion, and cohort retention models.</div>
+          <div class="card-footer">
+            <span></span>
+            <span class="card-arrow">&rarr;</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- 2x2 grid -->
     <div class="case-study-grid">
+
+      <a href="chain/index.html" class="case-study-card live card-accent-rose">
+        <div>
+          <div class="card-icon">
+            <svg width="44" height="24" viewBox="0 0 44 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="4" width="14" height="16" rx="8" fill="none" stroke="#b87070" stroke-width="1.5" opacity="0.75"/>
+              <rect x="11" y="4" width="14" height="16" rx="8" fill="none" stroke="#b87070" stroke-width="1.5" opacity="0.85"/>
+              <rect x="21" y="4" width="14" height="16" rx="8" fill="none" stroke="#b87070" stroke-width="1.5" opacity="0.75"/>
+              <rect x="31" y="4" width="12" height="16" rx="6" fill="none" stroke="#b87070" stroke-width="1.5" opacity="0.6"/>
+              <line x1="39" y1="12" x2="43" y2="12" stroke="#b87070" stroke-width="1" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="card-title">CHaiN</div>
+          <div class="card-description">The end of the research-to-insights pipeline is a high lift stage. I built a tool that encodes my qualitative UX research experience to handle analysis and reporting at scale.</div>
+        </div>
+        <div class="card-footer">
+          <span></span>
+          <span class="card-arrow">&rarr;</span>
+        </div>
+      </a>
 
       <a href="ml-benchmarking/index.html" class="case-study-card live card-accent-amber">
         <div>
@@ -55,25 +145,6 @@
           </div>
           <div class="card-title">ML Platform Benchmarking at Google</div>
           <div class="card-description">ML teams at Google had no baseline for platform effectiveness. I built a survey instrument and analysis pipeline that produced one.</div>
-        </div>
-        <div class="card-footer">
-          <span></span>
-          <span class="card-arrow">&rarr;</span>
-        </div>
-      </a>
-
-      <a href="prioritizing-audio-needs/index.html" class="case-study-card live card-accent-teal">
-        <div>
-          <div class="card-icon">
-            <svg width="36" height="28" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="0" y="2" width="36" height="2" rx="1" fill="#6b9e78" opacity="0.7"/>
-              <rect x="0" y="10" width="28" height="2" rx="1" fill="#6b9e78" opacity="0.55"/>
-              <rect x="0" y="18" width="20" height="2" rx="1" fill="#6b9e78" opacity="0.4"/>
-              <rect x="0" y="26" width="12" height="2" rx="1" fill="#6b9e78" opacity="0.25"/>
-            </svg>
-          </div>
-          <div class="card-title">Prioritizing Audio Needs for Smart Glasses</div>
-          <div class="card-description">The team needed a principled basis for prioritizing which audio experiences to design for. I built a survey that turned rich qualitative data into a ranked list of outcomes.</div>
         </div>
         <div class="card-footer">
           <span></span>
@@ -115,19 +186,18 @@
         </div>
       </a>
 
-      <a href="chain/index.html" class="case-study-card live card-accent-rose">
+      <a href="prioritizing-audio-needs/index.html" class="case-study-card live card-accent-teal">
         <div>
           <div class="card-icon">
-            <svg width="44" height="24" viewBox="0 0 44 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="4" width="14" height="16" rx="8" fill="none" stroke="#b87070" stroke-width="1.5" opacity="0.75"/>
-              <rect x="11" y="4" width="14" height="16" rx="8" fill="none" stroke="#b87070" stroke-width="1.5" opacity="0.85"/>
-              <rect x="21" y="4" width="14" height="16" rx="8" fill="none" stroke="#b87070" stroke-width="1.5" opacity="0.75"/>
-              <rect x="31" y="4" width="12" height="16" rx="6" fill="none" stroke="#b87070" stroke-width="1.5" opacity="0.6"/>
-              <line x1="39" y1="12" x2="43" y2="12" stroke="#b87070" stroke-width="1" opacity="0.4"/>
+            <svg width="36" height="28" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="2" width="36" height="2" rx="1" fill="#6b9e78" opacity="0.7"/>
+              <rect x="0" y="10" width="28" height="2" rx="1" fill="#6b9e78" opacity="0.55"/>
+              <rect x="0" y="18" width="20" height="2" rx="1" fill="#6b9e78" opacity="0.4"/>
+              <rect x="0" y="26" width="12" height="2" rx="1" fill="#6b9e78" opacity="0.25"/>
             </svg>
           </div>
-          <div class="card-title">CHaiN</div>
-          <div class="card-description">The end of the research-to-insights pipeline is a high lift stage. I built a tool that encodes my qualitative UX research experience to handle analysis and reporting at scale.</div>
+          <div class="card-title">Prioritizing Audio Needs for Smart Glasses</div>
+          <div class="card-description">The team needed a principled basis for prioritizing which audio experiences to design for. I built a survey that turned rich qualitative data into a ranked list of outcomes.</div>
         </div>
         <div class="card-footer">
           <span></span>
