@@ -110,7 +110,9 @@ function applyParams() {
           prevNav.style.display = '';
         }
       } else {
-        prevNav.style.display = 'none';
+        /* Replace with empty span to preserve space-between alignment */
+        const placeholder = document.createElement('span');
+        prevNav.parentNode.replaceChild(placeholder, prevNav);
       }
     }
 
@@ -124,7 +126,9 @@ function applyParams() {
           nextNav.style.display = '';
         }
       } else {
-        nextNav.style.display = 'none';
+        /* Replace with empty span to preserve space-between alignment */
+        const placeholder = document.createElement('span');
+        nextNav.parentNode.replaceChild(placeholder, nextNav);
       }
     }
   }
