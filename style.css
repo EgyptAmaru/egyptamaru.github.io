@@ -383,6 +383,15 @@ body.track-fdh .dtag-fdh { opacity: 1; }
   font-style: normal;
 }
 
+/* ── PROJECT TITLE SPAN ACCENT — per page ── */
+.project-title span { color: var(--amber); } /* default fallback */
+body.page-periwinkle .project-title span { color: var(--periwinkle); }
+body.page-amber      .project-title span { color: var(--amber); }
+body.page-teal       .project-title span { color: var(--teal); }
+body.page-rose       .project-title span { color: var(--rose); }
+body.page-blue       .project-title span { color: var(--blue); }
+
+
 /* ── IDENTIFIER CHIPS ── */
 /* Use <span class="identifier"> for technical identifiers: model names,
    file names, function names, CLI commands. Override color per page
@@ -390,10 +399,7 @@ body.track-fdh .dtag-fdh { opacity: 1; }
    proportionally with any parent font-size change. */
 .decision-body .identifier {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.78em;
-  padding: 1px 6px;
-  border-radius: 3px;
-  background: rgba(232,228,220,0.20);
+  font-size: 0.72em;
   color: var(--muted);
 }
 
@@ -583,11 +589,11 @@ body.page-blue .decision-body .identifier {
 .case-study-card.live:hover { background: var(--surface2); cursor: pointer; }
 .case-study-card.coming { cursor: default; }
 
-.card-accent-amber      { border-left: 1px solid var(--amber); }
-.card-accent-teal       { border-left: 1px solid var(--teal); }
-.card-accent-blue       { border-left: 1px solid var(--blue); }
-.card-accent-rose       { border-left: 1px solid var(--rose); }
-.card-accent-periwinkle { border-left: 1px solid var(--periwinkle); }
+.card-accent-amber      { border-left: 1px solid var(--amber) !important; }
+.card-accent-teal       { border-left: 1px solid var(--teal) !important; }
+.card-accent-blue       { border-left: 1px solid var(--blue) !important; }
+.card-accent-rose       { border-left: 1px solid var(--rose) !important; }
+.card-accent-periwinkle { border-left: 1px solid var(--periwinkle) !important; }
 
 .card-icon { margin-bottom: 20px; }
 .card-icon svg { display: block; }

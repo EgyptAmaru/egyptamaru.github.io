@@ -19,7 +19,7 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 24px;
-    min-height: auto;
+    min-height: 180px;
     padding: 56px 24px;
     align-items: center;
   }
@@ -39,6 +39,13 @@
   }
   .case-study-card.featured .card-footer {
     margin-top: 12px;
+  }
+  /* Non-featured cards: card-left stacks normally */
+  .case-study-card:not(.featured) .card-left {
+    display: contents;
+  }
+  .case-study-card:not(.featured) .card-right {
+    display: contents;
   }
   @media (max-width: 680px) {
     .case-study-card.featured {
@@ -83,7 +90,7 @@
 
     <!-- Featured card: Ecommerce Behavior Analytics -->
     <div class="case-study-featured">
-      <a href="ecommerce-behavior-analytics/index.html" class="case-study-card featured live" style="border-left: 1px solid #9999dd;">
+      <a href="ecommerce-behavior-analytics/index.html" class="case-study-card featured live card-accent-periwinkle" data-slug="ecommerce">
         <div class="card-left">
           <div class="card-icon">
             <svg width="36" height="36" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -113,8 +120,8 @@
     <!-- 2x2 grid -->
     <div class="case-study-grid">
 
-      <a href="chain/index.html" class="case-study-card live card-accent-rose">
-        <div>
+      <a href="chain/index.html" class="case-study-card live card-accent-rose" data-slug="chain">
+        <div class="card-left">
           <div class="card-icon">
             <svg width="44" height="24" viewBox="0 0 44 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="1" y="4" width="14" height="16" rx="8" fill="none" stroke="#b87070" stroke-width="1.5" opacity="0.75"/>
@@ -125,16 +132,18 @@
             </svg>
           </div>
           <div class="card-title">CHaiN</div>
-          <div class="card-description">The end of the research-to-insights pipeline is a high lift stage. I built a tool that encodes my qualitative UX research experience to handle analysis and reporting at scale.</div>
         </div>
-        <div class="card-footer">
-          <span></span>
-          <span class="card-arrow">&rarr;</span>
+        <div class="card-right">
+          <div class="card-description">The end of the research-to-insights pipeline is a high lift stage. I built a tool that encodes my qualitative UX research experience to handle analysis and reporting at scale.</div>
+          <div class="card-footer">
+            <span></span>
+            <span class="card-arrow">&rarr;</span>
+          </div>
         </div>
       </a>
 
-      <a href="ml-benchmarking/index.html" class="case-study-card live card-accent-amber">
-        <div>
+      <a href="ml-benchmarking/index.html" class="case-study-card live card-accent-amber" data-slug="ml-benchmarking">
+        <div class="card-left">
           <div class="card-icon">
             <svg width="36" height="28" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0" y="12" width="6" height="16" rx="1" fill="#c8a96e" opacity="0.4"/>
@@ -144,16 +153,18 @@
             </svg>
           </div>
           <div class="card-title">ML Platform Benchmarking at Google</div>
-          <div class="card-description">ML teams at Google had no baseline for platform effectiveness. I built a survey instrument and analysis pipeline that produced one.</div>
         </div>
-        <div class="card-footer">
-          <span></span>
-          <span class="card-arrow">&rarr;</span>
+        <div class="card-right">
+          <div class="card-description">ML teams at Google had no baseline for platform effectiveness. I built a survey instrument and analysis pipeline that produced one.</div>
+          <div class="card-footer">
+            <span></span>
+            <span class="card-arrow">&rarr;</span>
+          </div>
         </div>
       </a>
 
-      <a href="redesign-unmoderated-testing/index.html" class="case-study-card live card-accent-blue">
-        <div>
+      <a href="redesign-unmoderated-testing/index.html" class="case-study-card live card-accent-blue" data-slug="redesign">
+        <div class="card-left">
           <div class="card-icon">
             <svg width="48" height="34" viewBox="0 0 48 34" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="1" y="1" width="16" height="13" rx="1.5" fill="none" stroke="#5a7a8a" stroke-width="1.25" opacity="0.8"/>
@@ -178,16 +189,18 @@
             </svg>
           </div>
           <div class="card-title">Redesigning an Unmoderated Testing Program at YouTube</div>
-          <div class="card-description">My team's unmoderated testing program had outgrown its own infrastructure. I redesigned the workflow and data architecture.</div>
         </div>
-        <div class="card-footer">
-          <span></span>
-          <span class="card-arrow">&rarr;</span>
+        <div class="card-right">
+          <div class="card-description">My team's unmoderated testing program had outgrown its own infrastructure. I redesigned the workflow and data architecture.</div>
+          <div class="card-footer">
+            <span></span>
+            <span class="card-arrow">&rarr;</span>
+          </div>
         </div>
       </a>
 
-      <a href="prioritizing-audio-needs/index.html" class="case-study-card live card-accent-teal">
-        <div>
+      <a href="prioritizing-audio-needs/index.html" class="case-study-card live card-accent-teal" data-slug="audio-needs">
+        <div class="card-left">
           <div class="card-icon">
             <svg width="36" height="28" viewBox="0 0 36 28" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0" y="2" width="36" height="2" rx="1" fill="#6b9e78" opacity="0.7"/>
@@ -197,11 +210,13 @@
             </svg>
           </div>
           <div class="card-title">Prioritizing Audio Needs for Smart Glasses</div>
-          <div class="card-description">The team needed a principled basis for prioritizing which audio experiences to design for. I built a survey that turned rich qualitative data into a ranked list of outcomes.</div>
         </div>
-        <div class="card-footer">
-          <span></span>
-          <span class="card-arrow">&rarr;</span>
+        <div class="card-right">
+          <div class="card-description">The team needed a principled basis for prioritizing which audio experiences to design for. I built a survey that turned rich qualitative data into a ranked list of outcomes.</div>
+          <div class="card-footer">
+            <span></span>
+            <span class="card-arrow">&rarr;</span>
+          </div>
         </div>
       </a>
 

@@ -12,7 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 </head>
-<body class="page-periwinkle">
+<body class="page-periwinkle" data-slug="ecommerce">
 
 <nav class="nav">
   <div class="nav-left">
@@ -73,16 +73,15 @@
       <li class="decision-item track-ae" data-tracks="ae">
         <button class="decision-trigger" onclick="toggleDecision(this)">
           <span class="decision-number">01</span>
-          <span class="decision-name">Built locally and migrated to the cloud due to memory limits</span>
+          <span class="decision-name">Built locally, then migrated to the cloud</span>
           <span class="decision-tags-inline">
             <span class="dtag dtag-ae">AE</span>
           </span>
           <span class="decision-chevron">&#9660;</span>
         </button>
         <div class="decision-body">
-          <p>My plan was to build locally with <mark>PostgreSQL</mark> to build quickly and then migrate to <mark>BigQuery</mark> to handle data volume once the models were stable. But when I tried to materialize the mart layer with <mark>dbt</mark>, I hit memory limits. The migration needed to happen earlier.</p>
-          <p>Migration followed a series of steps: installing the <span class="identifier">dbt-bigquery</span> adapter, configuring Google Cloud Platform, and updating my <span class="identifier">profiles.yml</span> and <span class="identifier">sources.yml</span> files. On GCP, I needed to create a project, enable the BigQuery API, configure a service account, and load data via Google Cloud Storage.</p>
-          <p>The first dbt run against BigQuery surfaced 3 syntax errors: interval arithmetic, argument order, and cast syntax. These were differences between PostgreSQL and BigQuery. None were conceptually difficult, but each required identifying the BigQuery equivalent before proceeding.</p>
+          <p>The plan was to build locally with <mark>PostgreSQL</mark> and migrate to <mark>BigQuery</mark> once the models were stable. The transition needed to happen earlier when I hit memory limits materializing the mart layer with <mark>dbt</mark>.</p>
+          <p>Migration followed a series of steps: installing the <span class="identifier">dbt-bigquery</span> adapter, configuring <mark>Google Cloud Platform</mark>, and updating my <span class="identifier">profiles.yml</span> and <span class="identifier">sources.yml</span> files. On GCP, I needed to create a project, enable the BigQuery API, configure a service account, and load data via Google Cloud Storage.</p>
         </div>
       </li>
 
@@ -112,7 +111,7 @@
           <span class="decision-chevron">&#9660;</span>
         </button>
         <div class="decision-body">
-          <p>When I began analysis, I wrote nested queries in <mark>SQL</mark> to build up to the conversion rate calculation. When I translated my code to dbt, I had to identify the line between the intermediate and mart layer. The innermost layer pivots data to capture each user's first timestamp per funnel step. Any downstream model that needs funnel entry data can reference <span class="identifier">int_funnel</span> without reimplementing the pivot. As a result, the rest of the logic, which counts users per step, enforces order, and computes the conversion rate, moved downstream to the mart layer. Intermediate models hold building blocks. Marts hold answers.</p>
+          <p>When I began analysis, I wrote nested queries in <mark>SQL</mark> to build up to the conversion rate calculation. When I translated my code to dbt, I had to identify the line between the intermediate and mart layer. The innermost layer pivots data to capture each user's first timestamp per funnel step. Any downstream model that needs funnel entry data can reference <span class="identifier">int_funnel</span> without reimplementing the pivot. As a result, the rest of the logic, which counts users per step, enforces order, and computes the conversion rate, moved downstream to the mart layer. Intermediate models hold building blocks. Mart models hold answers.</p>
         </div>
       </li>
 
@@ -170,8 +169,8 @@
   </div>
 
   <div class="footer-nav">
-    <span></span>
-    <a href="../chain/index.html" class="next-project">CHaiN</a>
+    <a href="#" class="prev-project" style="display:none;"></a>
+    <a href="#" class="next-project"></a>
   </div>
 
 </div>
