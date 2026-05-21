@@ -638,6 +638,42 @@ body.page-blue .decision-body .identifier {
   font-style: italic;
 }
 
+/* Featured Card Overrides */
+.case-study-featured {
+  margin-bottom: 12px;
+}
+.case-study-card.featured {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 24px;
+  height: 220px;
+  padding: 56px 24px;
+  align-items: center;
+}
+.case-study-card.featured .card-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.case-study-card.featured .card-icon {
+  margin-bottom: 0;
+}
+.case-study-card.featured .card-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.case-study-card.featured .card-footer {
+  margin-top: 12px;
+}
+/* Non-featured cards: card-left stacks normally */
+.case-study-card:not(.featured) .card-left {
+  display: contents;
+}
+.case-study-card:not(.featured) .card-right {
+  display: contents;
+}
 
 /* ══════════════════════════════════════════════════
    RESPONSIVE
@@ -658,4 +694,10 @@ body.page-blue .decision-body .identifier {
   .intro-photo { width: 120px; height: 148px; }
   .case-study-grid { grid-template-columns: 1fr; }
   .case-study-card { min-height: auto; }
+
+  .case-study-card.featured {
+    grid-template-columns: 1fr;
+    height: auto;
+    padding: 32px 24px;
+  }
 }
