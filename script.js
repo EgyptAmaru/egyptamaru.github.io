@@ -85,10 +85,15 @@ function applyParams() {
       }
     }
 
-    /* Update role title on About Me page */
-    const roleEl = document.querySelector('.intro-role');
-    if (roleEl && roleTitles[view]) {
-      roleEl.textContent = roleTitles[view];
+    /* Update role title and browser tab on About Me page */
+    if (roleTitles[view]) {
+      const roleEl = document.querySelector('.intro-role');
+      if (roleEl) {
+        roleEl.textContent = roleTitles[view];
+      }
+      
+      // Dynamically update the browser tab
+      document.title = `Egypt Amaru — ${roleTitles[view]}`;
     }
   }
 
