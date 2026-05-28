@@ -14,19 +14,20 @@ function toggleDecision(trigger) {
    Canonical slug, display name, and URL path for each case study.
    Update here when adding new case studies — no HTML footer nav changes needed. */
 const pages = [
-  { slug: 'ecommerce',       name: 'Ecommerce Behavior Analytics',                         path: '../ecommerce-behavior-analytics/index.html' },
-  { slug: 'chain',           name: 'CHaiN',                                                path: '../chain/index.html' },
-  { slug: 'ml-benchmarking', name: 'ML Platform Benchmarking at Google',                   path: '../ml-benchmarking/index.html' },
+  { slug: 'ecommerce',       name: 'Ecommerce Behavior Analytics',                          path: '../ecommerce-behavior-analytics/index.html' },
+  { slug: 'chain',           name: 'CHaiN',                                                 path: '../chain/index.html' },
+  { slug: 'ml-benchmarking', name: 'ML Platform Benchmarking at Google',                    path: '../ml-benchmarking/index.html' },
   { slug: 'redesign',        name: 'Redesigning an Unmoderated Testing Program at YouTube', path: '../redesign-unmoderated-testing/index.html' },
-  { slug: 'audio-needs',     name: 'Prioritizing Audio Needs for Smart Glasses',            path: '../prioritizing-audio-needs/index.html' },
+  { slug: 'audio-needs',     name: 'Prioritizing Audio Needs for Smart Glasses',             path: '../prioritizing-audio-needs/index.html' },
 ];
 
 /* ── CARD ORDER PER VIEW ──
-   Default order (no parameter) follows DOM order in about-index.html. */
+   Default order (no parameter) follows DOM order in index.html. */
 const cardOrders = {
   ae:   ['ecommerce', 'chain', 'redesign', 'ml-benchmarking', 'audio-needs'],
   da:   ['ml-benchmarking', 'ecommerce', 'audio-needs', 'chain', 'redesign'],
   quxr: ['audio-needs', 'ml-benchmarking', 'chain', 'redesign', 'ecommerce'],
+  uxr:  ['audio-needs', 'ml-benchmarking', 'chain', 'redesign', 'ecommerce'],
   fdh:  ['ml-benchmarking', 'chain', 'redesign', 'audio-needs', 'ecommerce'],
 };
 
@@ -35,21 +36,36 @@ const roleTitles = {
   ae:   'Analytics Engineer, Behavioral Data',
   da:   'Data Analyst | Behavioral Data',
   quxr: 'Quantitative UX Researcher',
+  uxr:  'UX Researcher',
   fdh:  'Analytics Engineer, Behavioral Data',
+};
+
+/* ── ABOUT ME OPENING PARAGRAPHS PER VIEW ──
+   Default (no parameter), AE, DA, and FDH use the same paragraph.
+   QUXR and UXR use track-specific versions.
+   Second paragraph is fixed across all views and stays in HTML. */
+const narrativeOpenings = {
+  default: 'The work I pursued at Google and Meta over 7 years was closer to data engineering and analytics than to traditional UX research: redesigning data architectures to scale a research program, building modular codebases to produce org-wide metrics, and developing a multi-stage AI pipeline to transform unstructured data into structured outputs.',
+  ae:      'The work I pursued at Google and Meta over 7 years was closer to data engineering and analytics than to traditional UX research: redesigning data architectures to scale a research program, building modular codebases to produce org-wide metrics, and developing a multi-stage AI pipeline to transform unstructured data into structured outputs.',
+  da:      'The work I pursued at Google and Meta over 7 years was closer to data engineering and analytics than to traditional UX research: redesigning data architectures to scale a research program, building modular codebases to produce org-wide metrics, and developing a multi-stage AI pipeline to transform unstructured data into structured outputs.',
+  fdh:     'The work I pursued at Google and Meta over 7 years was closer to data engineering and analytics than to traditional UX research: redesigning data architectures to scale a research program, building modular codebases to produce org-wide metrics, and developing a multi-stage AI pipeline to transform unstructured data into structured outputs.',
+  quxr:    'I\u2019ve designed quantitative measurement systems over 7 years at Google and Meta: survey instrumentation for ML platform benchmarking, multi-source triangulation that converged qualitative and quantitative data, and statistical methods like bootstrap significance testing to produce defensible signal at scale.',
+  uxr:     'I\u2019ve designed and executed mixed-methods UX research for 7 years at Google and Meta, working in complex and ambiguous product areas like ML infrastructure and hardware wearables. Answering business questions rigorously required triangulation across qualitative and quantitative sources and converting unstructured research data into structured outputs.',
 };
 
 function applyParams() {
   const params = new URLSearchParams(window.location.search);
   const view = params.get('view');
-  const validViews = ['ae', 'da', 'quxr', 'fdh'];
+  const validViews = ['ae', 'da', 'quxr', 'uxr', 'fdh'];
 
   if (view && validViews.includes(view)) {
     document.body.classList.add('track-' + view);
 
-    /* Sort decision log entries by track relevance (case study pages) */
+    /* Sort decision log entries by track relevance (case study pages).
+       Both quxr and uxr map to the 'uxr' data-tracks value. */
     const list = document.getElementById('decision-list');
     if (list) {
-      const trackKey = view === 'quxr' ? 'uxr' : view;
+      const trackKey = (view === 'quxr' || view === 'uxr') ? 'uxr' : view;
       const items = Array.from(list.querySelectorAll('.decision-item'));
       const relevant   = items.filter(i => (i.dataset.tracks || '').split(',').includes(trackKey));
       const irrelevant = items.filter(i => !(i.dataset.tracks || '').split(',').includes(trackKey));
@@ -85,15 +101,27 @@ function applyParams() {
       }
     }
 
-    /* Update role title and browser tab on About Me page */
+    /* Update role title on About Me page */
+    const roleEl = document.querySelector('.intro-role');
+    if (roleEl && roleTitles[view]) {
+      roleEl.textContent = roleTitles[view];
+    }
+
+    /* Update browser tab title */
     if (roleTitles[view]) {
-      const roleEl = document.querySelector('.intro-role');
-      if (roleEl) {
-        roleEl.textContent = roleTitles[view];
-      }
-      
-      // Dynamically update the browser tab
-      document.title = `Egypt Amaru — ${roleTitles[view]}`;
+      document.title = `Egypt Amaru \u2014 ${roleTitles[view]}`;
+    }
+  }
+
+  /* Update About Me opening paragraph.
+     Targets the first <p> inside .narrative-body.
+     Falls back to default if no view parameter is present. */
+  const narrativeBody = document.querySelector('.narrative-body');
+  if (narrativeBody) {
+    const firstP = narrativeBody.querySelector('p');
+    if (firstP) {
+      const key = (view && narrativeOpenings[view]) ? view : 'default';
+      firstP.textContent = narrativeOpenings[key];
     }
   }
 
@@ -115,7 +143,6 @@ function applyParams() {
           prevNav.style.display = '';
         }
       } else {
-        /* Replace with empty span to preserve space-between alignment */
         const placeholder = document.createElement('span');
         prevNav.parentNode.replaceChild(placeholder, prevNav);
       }
@@ -131,7 +158,6 @@ function applyParams() {
           nextNav.style.display = '';
         }
       } else {
-        /* Replace with empty span to preserve space-between alignment */
         const placeholder = document.createElement('span');
         nextNav.parentNode.replaceChild(placeholder, nextNav);
       }
