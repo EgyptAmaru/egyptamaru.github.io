@@ -41,11 +41,11 @@ const roleTitles = {
 };
 
 /* ── ABOUT ME OPENING PARAGRAPHS PER VIEW ──
-   Default (no parameter), AE, DA, and FDH use the same paragraph.
-   QUXR and UXR use track-specific versions.
-   Second paragraph is fixed across all views and stays in HTML. */
+   AE, DA, and FDH share one paragraph; QUXR and UXR use track-specific versions.
+   The default (no parameter) paragraph already absorbs the cognitive-science
+   second paragraph, so that second paragraph is hidden on the default view only. */
 const narrativeOpenings = {
-  default: 'The work I pursued at Google and Meta over 7 years was closer to data engineering and analytics than to traditional UX research: redesigning data architectures to scale a research program, building modular codebases to produce org-wide metrics, and developing a multi-stage AI pipeline to transform unstructured data into structured outputs.',
+  default: 'My work at Google and Meta was driven by a fascination with how people think and behave, and by how much the systems producing insights determine their quality and accuracy. Over 7 years, that meant going deeper than most UX researchers do: redesigning data architectures to scale a research program, building modular codebases to produce org-wide metrics, and developing a multi-stage AI pipeline to transform unstructured data into structured outputs.',
   ae:      'The work I pursued at Google and Meta over 7 years was closer to data engineering and analytics than to traditional UX research: redesigning data architectures to scale a research program, building modular codebases to produce org-wide metrics, and developing a multi-stage AI pipeline to transform unstructured data into structured outputs.',
   da:      'The work I pursued at Google and Meta over 7 years was closer to data engineering and analytics than to traditional UX research: redesigning data architectures to scale a research program, building modular codebases to produce org-wide metrics, and developing a multi-stage AI pipeline to transform unstructured data into structured outputs.',
   fdh:     'The work I pursued at Google and Meta over 7 years was closer to data engineering and analytics than to traditional UX research: redesigning data architectures to scale a research program, building modular codebases to produce org-wide metrics, and developing a multi-stage AI pipeline to transform unstructured data into structured outputs.',
@@ -122,6 +122,10 @@ function applyParams() {
     if (firstP) {
       const key = (view && narrativeOpenings[view]) ? view : 'default';
       firstP.textContent = narrativeOpenings[key];
+
+      /* The default opening covers the same ground as the secondary paragraph. */
+      const secondP = narrativeBody.querySelector('.narrative-secondary');
+      if (secondP && key === 'default') secondP.remove();
     }
   }
 
